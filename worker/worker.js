@@ -395,6 +395,13 @@ async function handlePlay(url) {
     return new Response("bad params", { status: 400, headers: CORS });
   }
 
+  // 解析一次要 5~7 秒(qlplayer 的 resolve 慢)，同一集短时间内重复请求直接复用。
+  // 分片令牌有效期约 20 小时，缓存 120 秒是安全的。
+  const cache = caches.default;
+  const ck = new Request(`https://c77.internal/p/${id}-${sid}-${nid}`);
+  const hit = await cache.match(ck);
+  if (hit) return hit;
+
   const p = await platformUrl(id, sid, nid);
   if (p.err) {
     return new Response(p.err, { status: 502, headers: CORS });
@@ -418,13 +425,17 @@ async function handlePlay(url) {
     ? normalizeM3u8(m.text, m3u8Url)
     : m.text;
 
-  return new Response(body, {
+  const res = new Response(body, {
     status: 200,
     headers: Object.assign({}, CORS, {
       "Content-Type": "application/vnd.apple.mpegurl",
-      "Cache-Control": "no-store",
+      "Cache-Control": "public, max-age=120",
     }),
   });
+  const toCache = res.clone();
+  toCache.headers.set("Cache-Control", "public, max-age=120");
+  await cache.put(ck, toCache);
+  return res;
 }
 
 // ===================== 主入口 =====================
