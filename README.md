@@ -41,44 +41,47 @@
 
 ## 访问
 
-先说结论：**投影仪上填镜像地址，不要填 `workers.dev`。**
-
-`workers.dev` 这个域名国内基本不可达（实测直连、走代理、DoH 都拿不到，20 秒超时），而 GitHub raw 本身也是 15 秒不响应。能用的只有第三方反代。实测：
-
-| 通道 | 结果 |
-| --- | --- |
-| `raw.githubusercontent.com` | 15s 超时 |
-| `workers.dev` | 不通 |
-| `cdn.jsdelivr.net` | 通，但发 `s-maxage=43200`，purge 后 4 分钟仍是旧文件 |
-| `gh-proxy.com` | 通，0.7–2.9s，`max-age=60`，**内容实时** |
-| `ghfast.top` | 通，1.4s，可作备用 |
-
-所以要填的是：
+投影仪上填：
 
 ```
-https://gh-proxy.com/https://raw.githubusercontent.com/Daiwangyang/tvbox-probe/main/my.json
+https://cf.ddngo.space/my.json?sig=Q_wVNi5yQy7UK7Gc
 ```
 
-`gh-proxy.com` 挂了就换 `ghfast.top` 或 `ghproxy.net`，把域名替换掉即可，路径不变。
+填一次，之后不动。域名是自己的，不依赖第三方反代。
 
-### 那 Worker 还要不要
-
-要，但只当加 `sig` 的壳。它按顺序试五家上游（反代优先，raw 和 jsDelivr 兜底），每 8 秒换下一家，自己发 `max-age=60`。缺点是 `workers.dev` 国内不通，所以只有在你另配了自定义域名、或客户端能走代理时才有用。
+`sig` 是密码，漏出去就换一串：
 
 ```bash
 cd worker
 npx wrangler secret put SIGN
 npx wrangler deploy
-# → https://<你的worker>.workers.dev/my.json?sig=<SIGN>
 ```
 
-不套 Worker 就等于不设防：仓库公开，谁看到地址都能用。想挡人的话，把上面那条镜像地址里的 `Daiwangyang` 换成别人猜不到的 fork 也行。
+### 为什么不直接用 workers.dev / raw / jsDelivr
 
-## 缓存这一关别绕开
+都实测过：
 
-成品要从 GitHub 拉到投影仪，中间隔着一层 CDN。jsDelivr 对分支引用缓存 12 小时，**每 30 分钟探一轮、中间 11 个半小时拿的还是旧文件**，探测频率白做。
+| 通道 | 结果 |
+| --- | --- |
+| `raw.githubusercontent.com` | 15s 超时 |
+| `*.workers.dev` | 不通（直连、代理、DoH 全 20s 超时）|
+| `cdn.jsdelivr.net` | 通，但分支引用发 `s-maxage=43200`，调 purge 后 4 分钟仍吐旧文件 |
+| `cf.ddngo.space` | 通，1.2–2.1s，**60 秒过期后确实回源** |
+| `gh-proxy.com` / `ghfast.top` | 通，作 Worker 的回源上游 |
 
-`purge.py` 每轮提交后主动推 `purge.jsdelivr.net` 清缓存（见 workflow 最后一步）。实测 purge 接口虽然返回 `finished`，边缘节点仍会滞后几分钟——这也是最终选反代而不是 jsDelivr 的原因：反代发的是 `max-age=60`，天然对齐轮次。
+绑自己域名走的是 Cloudflare 的另一条入口，绕过了失效的 workers.dev。
+
+### 回源顺序
+
+Worker 按下面顺序试，每家 8 秒超时，挂了自动下一家：
+
+1. `gh-proxy.com`
+2. `ghfast.top`
+3. `ghproxy.net`
+4. `raw.githubusercontent.com`
+5. `cdn.jsdelivr.net`
+
+命中的结果进 Cache API 存 60 秒，再发出去。
 
 ## 本地跑
 
@@ -114,7 +117,8 @@ python playtest.py        # 播放实测(需要 ffmpeg)
 - 播放实测只覆盖前 14 个 CMS 站（`MAX_CANDIDATES`），csp 站测不了——它们的地址要 spider 跑出来
 - 403/404 的站会被判不可播沉底，但不删；片源本身抽风时可能误判一轮
 - 直播源(`lives`)没做
-- 依赖第三方反代，它们单点、说关就关；挂了要手动换域名
+- 回源仍靠第三方反代，但它们只是 Worker 的上游，任一挂掉会自动跳到下一家，多个全挂才影响更新
+- Cloudflare 免费版在国内不保证速度，实测 1.2–2.1s 尚可，恶化时把投影仪换回 `gh-proxy.com` 直连地址
 - 公开仓库 Actions 不限时长；转回私有就只剩 2000 分钟/月，得把 cron 退回 `0 */4`
 
 片源均为未授权，脚本只汇总接口 URL，不托管内容。

@@ -23,12 +23,12 @@ const BRANCH = "main";
 // 60 秒。和上游镜像的 max-age 对齐,不叠出自己的缓存层
 const MAX_AGE = 60;
 
-// 按实测速度排序。前两个先试,后面的只是兜底
+// 按实测速度排序。ghproxy.net 不稳,挪到 raw 之后
 const MIRRORS = [
   (p) => `https://gh-proxy.com/https://raw.githubusercontent.com/${REPO}/${BRANCH}${p}`,
   (p) => `https://ghfast.top/https://raw.githubusercontent.com/${REPO}/${BRANCH}${p}`,
-  (p) => `https://ghproxy.net/https://raw.githubusercontent.com/${REPO}/${BRANCH}${p}`,
   (p) => `https://raw.githubusercontent.com/${REPO}/${BRANCH}${p}`,
+  (p) => `https://ghproxy.net/https://raw.githubusercontent.com/${REPO}/${BRANCH}${p}`,
   (p) => `https://cdn.jsdelivr.net/gh/${REPO}@${BRANCH}${p}`,
 ];
 
