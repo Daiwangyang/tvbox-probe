@@ -51,3 +51,9 @@ jobs:
           git diff --staged --quiet && echo "无变化" && exit 0
           git commit -m "chore: refresh $(date -u +%Y-%m-%dT%H:%MZ)"
           git push
+
+      # 提交后必须推 CDN:jsDelivr 对分支引用默认缓 12 小时,
+      # 不推的话半小时一轮等于白跑,客户端半天才见到新文件。
+      - name: 推 jsDelivr 缓存
+        run: python purge.py
+        continue-on-error: true
