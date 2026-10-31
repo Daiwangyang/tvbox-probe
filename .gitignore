@@ -1,0 +1,8 @@
+run*.log
+r*.log
+serve.log
+__pycache__/
+*.pyc
+node_modules/
+.workbuddy/
+.jarcache/

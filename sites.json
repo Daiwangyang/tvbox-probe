@@ -1,0 +1,124 @@
+{
+ "sites": [
+  {
+   "key": "seed",
+   "name": "影视 • 建安",
+   "type": 0,
+   "api": "http://154.219.117.232:9981/jacloudapi.php/provide/vod"
+  },
+  {
+   "key": "seed",
+   "name": "🔃量子┃资源",
+   "type": 0,
+   "api": "http://cj.lziapi.com/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "🍀┃非凡┃资源",
+   "type": 0,
+   "api": "http://ffzy5.tv/api.php/provide/vod"
+  },
+  {
+   "key": "seed",
+   "name": "影视 • 非凡[直连]",
+   "type": 0,
+   "api": "http://ffzy.tv/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "影视 • 电影天堂",
+   "type": 0,
+   "api": "http://caiji.dyttzyapi.com/api.php/provide/vod"
+  },
+  {
+   "key": "seed",
+   "name": "🍭非凡┃采集",
+   "type": 0,
+   "api": "http://cj.ffzyapi.com/api.php/provide/vod/at/xml/"
+  },
+  {
+   "key": "seed",
+   "name": "🍚玛丽┃秒播",
+   "type": 0,
+   "api": "https://360zy.com/api.php/provide/vod"
+  },
+  {
+   "key": "seed",
+   "name": "🕹️淘片┃采集",
+   "type": 0,
+   "api": "https://taopianapi.com/cjapi/mc/vod/json.html"
+  },
+  {
+   "key": "seed",
+   "name": "🔥️火狐┃秒播",
+   "type": 0,
+   "api": "https://hhzyapi.com/api.php/provide/vod/?ac=list"
+  },
+  {
+   "key": "seed",
+   "name": "影视 • 极速[直连]",
+   "type": 0,
+   "api": "https://jszyapi.com/api.php/provide/vod/?ac=list"
+  },
+  {
+   "key": "seed",
+   "name": "🐂红牛┃采集",
+   "type": 0,
+   "api": "https://www.hongniuzy2.com/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "🌪️暴风影音",
+   "type": 0,
+   "api": "https://app.bfzyapi.com/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "🔰金鹰┃影视",
+   "type": 0,
+   "api": "https://jyzyapi.com/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "🥑┃量子┃资源",
+   "type": 0,
+   "api": "https://lzizy1.com/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "api.guangsuapi.com",
+   "type": 0,
+   "api": "https://api.guangsuapi.com/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "bfzyapi.com",
+   "type": 0,
+   "api": "https://bfzyapi.com/api.php/provide/vod/"
+  },
+  {
+   "key": "seed",
+   "name": "🐯虎牙采集",
+   "type": 0,
+   "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8"
+  },
+  {
+   "key": "seed",
+   "name": "caiji.moduapi.cc",
+   "type": 0,
+   "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list"
+  },
+  {
+   "key": "seed",
+   "name": "🎏百度┃采集",
+   "type": 0,
+   "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list"
+  },
+  {
+   "key": "seed",
+   "name": "zuida.xyz",
+   "type": 0,
+   "api": "https://zuida.xyz/api.php/provide/vod/"
+  }
+ ]
+}

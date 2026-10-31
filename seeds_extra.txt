@@ -1,0 +1,32 @@
+# 追加种子源(人工补充,不被 fetch_seeds 覆盖)
+#
+# 一行一个地址,# 后面是备注。这些会和 seeds.txt 合并一起展开。
+# 上不了的没关系,不通过的自己会被测速淘汰。
+
+# --- 公开聚合仓 ---
+https://raw.liucn.cc/box/m.json  # ok线路
+https://qist.wyfc.qzz.io/fty.json  # 饭太硬镜像
+https://9280.kstore.space/wex.json  # 牛二wex
+https://9280.kstore.space/newwex.json  # 牛二newwex
+https://agit.ai/l/l/raw/branch/master/o.json  # agit聚合
+https://codeberg.org/leevi/apps/raw/branch/main/fast.json  # leevi
+https://gitlab.com/duomv/apps/-/raw/main/fast.json  # duomv
+https://cdn.jsdelivr.net/gh/liu673cn/box@main/m.json  # 11号托管
+https://cdn.jsdelivr.net/gh/qist/tvbox@master/jsm.json  # qist聚合
+https://cdn.jsdelivr.net/gh/qist/tvbox@master/xiaosa/api.json  # 潇洒
+https://cdn.jsdelivr.net/gh/xmbjm/svip@main/svip.json  # 拾光
+https://gist.githubusercontent.com/ph7368/20ee6c7b64d77d82f8f4162cdd04ad61/raw/gistfile1.txt  # gist
+
+# --- 官方接口页 ---
+https://cdn.jsdelivr.net/gh/TVboxorg/TVbox@main/dist/tvbox.json  # TVBox.org 多仓
+
+# --- 各家直发 ---
+http://xhztv.top/xhz  # 小盒子
+http://xhztv.top/4k.json  # 小盒子4K
+https://tv.xn--yhqu5zs87a.top  # 菜妮丝
+http://www.xn--sss604efuw.net/tv  # sss
+https://fty.888484.xyz/tv  # 饭太硬备用
+http://550.3vcn.work/wdjyys.json  # 金鹰
+https://6800.kstore.vip/fish.json  # 摸鱼儿
+https://700sjro44343.vicp.fun/eggp/0211/tv.json  # 二月红
+http://home.jundie.top:81/top98.json  # 俊哥
