@@ -2,5 +2,8 @@ name = "tvbox-probe"
 main = "worker.js"
 compatibility_date = "2026-10-01"
 
-# 免费额度每天 10 万次请求,够用
-# 部署后把 <你的worker>.workers.dev 地址加 ?sig=密码 就是配置地址
+# 走自己的域名。workers.dev 国内不通,绑自己的域名就绕开了那一层。
+# 子域名要在 Cloudflare 里先有一条能解析的 A/AAAA/CNAME 记录,Worker 才能接管。
+routes = [
+  { pattern = "cf.ddngo.space", custom_domain = true }
+]

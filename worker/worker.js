@@ -52,6 +52,15 @@ export default {
 
     const path = url.pathname === "/" ? `/${FILE}` : url.pathname;
 
+    // 带 sig 的响应缓存本身分不开、也不该被别的请求复用,所以用 Cache API
+    // 自己存一份。不带 sig 时 Cache-Control 头只是给浏览器看的,边缘不一定会缓存。
+    // key 里带 KV 版本号:改了缓存策略就把它加一,免得被旧条目按旧 TTL 卡住。
+    const KV = "v4";
+    const cache = caches.default;
+    const cacheKey = new Request(new URL(`/${KV}${path}`, url.origin).toString());
+    const hit = await cache.match(cacheKey);
+    if (hit) return hit;
+
     let body = null;
     let lastStatus = 502;
     for (const mk of MIRRORS) {
@@ -59,10 +68,12 @@ export default {
       const ctl = new AbortController();
       const timer = setTimeout(() => ctl.abort(), 8000);
       try {
+        // 关掉上游自带的 cacheEverything:它在边缘另存一份并按上游头算 TTL
+        // (实测 4 小时),会和我们的 60 秒打架。只走上面那层 Cache API。
         const res = await fetch(mk(path), {
           headers: { "User-Agent": "tvbox-probe-worker", Accept: "*/*" },
           signal: ctl.signal,
-          cf: { cacheTtl: MAX_AGE, cacheEverything: true },
+          cf: { cacheEverything: false },
         });
         if (res.ok) {
           body = await res.arrayBuffer();
@@ -85,7 +96,7 @@ export default {
       });
     }
 
-    return new Response(body, {
+    const out = new Response(body, {
       status: 200,
       headers: {
         ...CORS,
@@ -95,5 +106,12 @@ export default {
         "Cache-Control": `public, max-age=${MAX_AGE}`,
       },
     });
+    // clone 才能既存又发。存之前显式压一遍 Cache-Control:
+    // 不压的话 Cache API 会沿用上游镜像的头(可能 4 小时),轮次就跟不上了。
+    // 注意 out.headers 是 Headers 实例,用 {...} 展开会得到空对象,必须 clone 后 set。
+    const forCache = out.clone();
+    forCache.headers.set("Cache-Control", `public, max-age=${MAX_AGE}`);
+    await cache.put(cacheKey, forCache);
+    return out;
   },
 };
