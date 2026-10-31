@@ -13,7 +13,6 @@ import re
 import shutil
 import subprocess
 import sys
-import tempfile
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -28,23 +27,43 @@ WORKERS = 4              # ffmpeg 吃 CPU,并发别开大
 MAX_CANDIDATES = 14      # 只测初筛后的前 N 个
 
 
+def _urls_from_play_url(txt: str) -> list[str]:
+    """从 vod_play_url 里抠地址。
+
+    格式是 `集名$地址$$$集名$地址`,地址一圈 JSON 转义(`https:\\/\\/`),
+    直接按 "url":"..." 找是找不到的——那套字段只出现在少数自建接口里。
+    """
+    out: list[str] = []
+    for m in re.finditer(r'"vod_play_url"\s*:\s*"((?:[^"\\]|\\.)*)"', txt):
+        seg = m.group(1)
+        for part in seg.split("$$$"):
+            for piece in part.split("#"):
+                _, _, u = piece.partition("$")
+                u = u.replace("\\/", "/").strip()
+                if u.startswith(("http://", "https://")):
+                    out.append(u)
+    return out
+
+
 def pick_episode(api: str) -> str | None:
     """从一个站里抽一条能播的 m3u8 / mp4 地址。"""
     try:
-        raw, _, _ = probe.fetch(
-            probe.qs(api, {"ac": "videolist", "wd": probe.KEYWORDS[0]}), limit=6000
-        )
-        m = re.search(r'"vod_id"\s*:\s*(\d+)', probe.decode(raw))
-        if not m:
-            return None
-        raw2, _, _ = probe.fetch(
-            probe.qs(api, {"ac": "detail", "ids": m.group(1)}), limit=12000
-        )
-        txt = probe.decode(raw2)
-        for u in re.findall(r'"url"\s*:\s*"([^"]+)"', txt):
-            u = u.replace("\\/", "/")
-            if u.endswith((".m3u8", ".mp4")) or ".m3u8?" in u or ".mp4?" in u:
-                return u
+        for kw in probe.KEYWORDS:
+            raw, _, _ = probe.fetch(
+                probe.qs(api, {"ac": "videolist", "wd": kw}), limit=6000
+            )
+            txt = probe.decode(raw)
+            # 优先挑 m3u8 的记录,它们播放更稳,也便于计数
+            for m in re.finditer(r'"vod_id"\s*:\s*(\d+)', txt):
+                raw2, _, _ = probe.fetch(
+                    probe.qs(api, {"ac": "detail", "ids": m.group(1)}), limit=12000
+                )
+                body = probe.decode(raw2)
+                cands = [u for u in _urls_from_play_url(body)
+                         if u.endswith((".m3u8", ".mp4")) or ".m3u8?" in u]
+                if cands:
+                    m3u8 = [u for u in cands if ".m3u8" in u]
+                    return (m3u8 or cands)[0]
         return None
     except Exception:
         return None
@@ -55,37 +74,31 @@ def play_ok(url: str) -> dict:
     ff = shutil.which("ffmpeg")
     if not ff:
         return {"ok": False, "frames": 0, "reason": "无 ffmpeg"}
-    with tempfile.TemporaryDirectory() as td:
-        cmd = [
-            ff, "-hide_banner", "-loglevel", "error",
-            "-user_agent", probe.UA,
-            "-rw_timeout", "12000000",
-            "-i", url,
-            "-t", str(SECONDS),
-            "-f", "null", "-",
-        ]
-        try:
-            p = subprocess.run(cmd, capture_output=True, text=True,
-                               timeout=SECONDS + 25, encoding="utf-8", errors="replace")
-        except subprocess.TimeoutExpired:
-            return {"ok": False, "frames": 0, "reason": "超时"}
-        # 统计解出的帧数:用 -f null 时 ffmpeg 不报帧数,改成再跑一次统计
-        cmd2 = [
-            ff, "-hide_banner", "-user_agent", probe.UA,
-            "-rw_timeout", "12000000", "-i", url,
-            "-t", str(SECONDS), "-f", "null", "-",
-        ]
-        try:
-            p2 = subprocess.run(cmd2, capture_output=True, text=True,
-                                timeout=SECONDS + 25, encoding="utf-8", errors="replace")
-            m = re.search(r"frame=\s*(\d+)", p2.stderr)
-            frames = int(m.group(1)) if m else 0
-        except Exception:
-            frames = 0
+    # 只跑一遍:ffmpeg 的进度是用 \r 原地刷新的,要 -progress 才拿得到干净的帧数
+    cmd = [
+        ff, "-hide_banner", "-loglevel", "error",
+        "-user_agent", probe.UA,
+        "-rw_timeout", "12000000",
+        "-i", url,
+        "-t", str(SECONDS),
+        "-progress", "pipe:1",
+        "-f", "null", "-",
+    ]
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True,
+                           timeout=SECONDS + 25, encoding="utf-8", errors="replace")
+    except subprocess.TimeoutExpired:
+        return {"ok": False, "frames": 0, "reason": "超时"}
 
-    if p.returncode != 0 and frames == 0:
+    # -progress 每行 key=value,末尾一定有一条最终值
+    frames = 0
+    for m in re.finditer(r"^frame=(\d+)$", p.stdout or "", re.M):
+        frames = max(frames, int(m.group(1)))
+
+    if frames == 0:
         err = (p.stderr or "").strip().splitlines()
         return {"ok": False, "frames": 0, "reason": (err[-1][:70] if err else "解码失败")}
+    # 6 秒 24fps 满帧约 144,取 10fps 作合格线:能连出画面就算通
     return {"ok": frames >= SECONDS * 10, "frames": frames, "reason": ""}
 
 

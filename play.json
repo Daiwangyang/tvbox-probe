@@ -1,20 +1,5 @@
 {
- "s_86eb60a6ce": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_b6d1253152": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
  "s_ecc248efb9": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_4358685bfc": {
   "ok": false,
   "frames": 0,
   "reason": "抽不到播放地址"
@@ -24,42 +9,7 @@
   "frames": 0,
   "reason": "抽不到播放地址"
  },
- "s_459dfdcfb4": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_816a878e1e": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_f93b6d4dd2": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_08291d2be0": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
  "s_0e4430721d": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_7773f447e2": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_3cd3fe9036": {
-  "ok": false,
-  "frames": 0,
-  "reason": "抽不到播放地址"
- },
- "s_d8d52255b1": {
   "ok": false,
   "frames": 0,
   "reason": "抽不到播放地址"
@@ -68,5 +18,55 @@
   "ok": false,
   "frames": 0,
   "reason": "抽不到播放地址"
+ },
+ "s_816a878e1e": {
+  "ok": false,
+  "frames": 0,
+  "reason": "https://sd4.taopianplay1.com:43333c56b1bc09da3/HD/2026-01-02/15/93c2c9"
+ },
+ "s_08291d2be0": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_86eb60a6ce": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_f93b6d4dd2": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_459dfdcfb4": {
+  "ok": true,
+  "frames": 149,
+  "reason": ""
+ },
+ "s_4358685bfc": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_b6d1253152": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_7773f447e2": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_d8d52255b1": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
+ },
+ "s_3cd3fe9036": {
+  "ok": true,
+  "frames": 143,
+  "reason": ""
  }
 }

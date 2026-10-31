@@ -1,6 +1,15 @@
 {
  "sites": [
   {
+   "key": "s_459dfdcfb4",
+   "name": "caiji.moduapi.cc",
+   "type": 0,
+   "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_86eb60a6ce",
    "name": "🎀极速┃采集",
    "type": 1,
@@ -19,46 +28,10 @@
    "filter": 1
   },
   {
-   "key": "s_ecc248efb9",
-   "name": "影视 • 非凡[直连]",
-   "type": 0,
-   "api": "http://ffzy.tv/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_4358685bfc",
    "name": "🍀┃非凡┃资源",
    "type": 0,
    "api": "http://ffzy5.tv/api.php/provide/vod",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_455f477a4e",
-   "name": "ikunzyapi.com",
-   "type": 0,
-   "api": "https://ikunzyapi.com/api.php/provide/vod",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_459dfdcfb4",
-   "name": "caiji.moduapi.cc",
-   "type": 0,
-   "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_816a878e1e",
-   "name": "🕹️淘片┃采集",
-   "type": 0,
-   "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -82,19 +55,64 @@
    "filter": 1
   },
   {
-   "key": "s_0e4430721d",
-   "name": "🍎高清┃2K",
-   "type": 1,
-   "api": "https://api.1080zyku.com/inc/apijson.php",
+   "key": "s_7773f447e2",
+   "name": "🐂红牛┃采集",
+   "type": 0,
+   "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_7773f447e2",
-   "name": "🐂红牛┃采集",
+   "key": "s_3cd3fe9036",
+   "name": "api.guangsuapi.com",
    "type": 0,
-   "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_d8d52255b1",
+   "name": "🔰金鹰┃影视",
+   "type": 0,
+   "api": "https://jyzyapi.com/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_ecc248efb9",
+   "name": "影视 • 非凡[直连]",
+   "type": 0,
+   "api": "http://ffzy.tv/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_455f477a4e",
+   "name": "ikunzyapi.com",
+   "type": 0,
+   "api": "https://ikunzyapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_816a878e1e",
+   "name": "🕹️淘片┃采集",
+   "type": 0,
+   "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_0e4430721d",
+   "name": "🍎高清┃2K",
+   "type": 1,
+   "api": "https://api.1080zyku.com/inc/apijson.php",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -815,24 +833,6 @@
    "name": "💓‍原盘┃4K💓‍",
    "type": 3,
    "api": "csp_AiNewZhiNan4KGuard",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_3cd3fe9036",
-   "name": "api.guangsuapi.com",
-   "type": 0,
-   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_d8d52255b1",
-   "name": "🔰金鹰┃影视",
-   "type": 0,
-   "api": "https://jyzyapi.com/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
