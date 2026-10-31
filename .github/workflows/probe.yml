@@ -1,10 +1,11 @@
 name: probe
 
-# 3 小时一次。私有仓库 Actions 月额度 2000 分钟,这个频率约 900-1200 分钟,
-# 留了余量。别改到半小时一次,那个会超一倍。
+# 半小时一次。公开仓库 Actions 分钟数不限,单轮约 6 分钟,
+# 48 次/天 ≈ 290 分钟/天,不会撞免费并发上限。
+# (私有仓库只有 2000 分钟/月,那就得退回 4 小时一档。)
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -19,11 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: 装 ffmpeg
         run: |

@@ -98,8 +98,10 @@ def main() -> int:
         return 1
 
     sites = json.loads((ROOT / "my.json").read_text(encoding="utf-8"))["sites"]
-    cands = sites[:MAX_CANDIDATES]
-    print(f"对前 {len(cands)} 个站做播放测试({SECONDS}s/个,并发 {WORKERS})")
+    # csp 站 api 不是 URL,拉不到地址,只测 CMS 站
+    url_sites = [s for s in sites if s["type"] in (0, 1)]
+    cands = url_sites[:MAX_CANDIDATES]
+    print(f"对 {len(cands)} 个 CMS 站做播放测试({SECONDS}s/个,并发 {WORKERS})")
 
     results: dict[str, dict] = {}
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
@@ -126,10 +128,11 @@ def main() -> int:
 
     ordered = sorted(sites, key=rank)
     got = sum(1 for r in results.values() if r.get("ok"))
+    # 重写前把 spider 等全局字段原样带上,csp 站全靠它
+    doc = json.loads((ROOT / "my.json").read_text(encoding="utf-8"))
+    doc["sites"] = ordered
     (ROOT / "my.json").write_text(
-        json.dumps({"sites": ordered, "parses": [], "flags": [], "lives": []},
-                   ensure_ascii=False, indent=1),
-        encoding="utf-8",
+        json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8"
     )
     print(f"\n能播 {got}/{len(results)},已按流畅度重排 my.json")
     return 0

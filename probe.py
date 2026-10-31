@@ -41,6 +41,7 @@ MAIN_JAR = [""]                     # 承载站最多的那个 jar,只对它做�
 TIMEOUT = 8
 WORKERS = 24
 MAX_SITES_PER_SOURCE = 40
+MAX_CSP_PER_SOURCE = 20            # csp 站每个源取几个
 MAX_MS = 1500                        # 超过这个延迟不进成品
 DROP_AFTER = 2                       # 连续几轮不通才真正丢弃
 UA = (
@@ -336,7 +337,7 @@ def collect(seeds: list[str], base: list[dict]) -> list[dict]:
         sites = cfg.get("sites") or []
         # 这个配置自己绑的 jar,type 3 站全靠它跑;相对路径要拼成绝对地址
         own_jar = abs_jar((cfg.get("spider") or "").split(";")[0], seed)
-        takes = 0
+        takes = csp_takes = 0
         for s in sites:
             if not isinstance(s, dict):
                 continue
@@ -350,8 +351,9 @@ def collect(seeds: list[str], base: list[dict]) -> list[dict]:
                 takes += 1
             elif stype == 3 and api.startswith("csp_"):
                 # csp 站必须配 jar 才有意义;没有 jar 的 csp 站是死站
-                if not own_jar:
+                if not own_jar or csp_takes >= MAX_CSP_PER_SOURCE:
                     continue
+                csp_takes += 1
                 seen[api] = {"name": name, "api": api, "type": 3,
                              "from": seed, "jar": own_jar, "csp": True}
                 takes += 1
