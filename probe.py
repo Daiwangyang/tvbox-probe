@@ -44,6 +44,34 @@ MAX_SITES_PER_SOURCE = 40
 MAX_CSP_PER_SOURCE = 20            # csp 站每个源取几个
 MAX_MS = 1500                        # 超过这个延迟不进成品
 DROP_AFTER = 2                       # 连续几轮不通才真正丢弃
+
+# 手工维护、不参与探测的站点。每轮跑完都要重新追加回去,
+# 否则会被 probe 生成的结果整份覆盖掉。
+FIXED_SITES = [
+    {
+        "key": "s_77dpwqy",
+        "name": "🔥弹幕仓┃腾讯B站",
+        "type": 0,
+        "api": "https://cf.ddngo.space/77",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filter": 1,
+    },
+]
+
+
+def label(r: dict) -> str:
+    """站点名后面带上本轮实测延迟,方便选源时一眼看出谁快。
+
+    只有 CMS 站(真正发过搜索请求)的 ms 才有意义;
+    csp 蜘蛛站的 ms 是占位值 300,带上反而误导,所以不加。
+    """
+    nm = (r.get("name") or "?").strip()
+    ms = r.get("ms", -1)
+    if r.get("type", 0) in (0, 1) and isinstance(ms, int) and ms > 0:
+        return f"{nm} {ms}ms"
+    return nm
+
 UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
@@ -438,7 +466,7 @@ def main() -> int:
     sites = [
         {
             "key": k,
-            "name": r["name"],
+            "name": label(r),
             "type": r.get("type", 0),
             "api": r["api"],
             "searchable": 1,
@@ -469,7 +497,24 @@ def main() -> int:
         if dropped:
             print(f"  丢弃 {dropped} 个 jar 不匹配的 csp 站")
 
-    doc: dict = {"sites": sites, "parses": [], "flags": [], "lives": []}
+    # 手工站点追加到最后(不参与淘汰),同名 key 先剔掉旧的
+    fixed_keys = {s["key"] for s in FIXED_SITES}
+    sites = [s for s in sites if s["key"] not in fixed_keys] + list(FIXED_SITES)
+
+    # lives / parses / flags 是手工维护的,从上一份 my.json 继承,
+    # 否则每轮跑完都会把体育直播源冲掉。
+    prev: dict = {}
+    if OUT_JSON.exists():
+        try:
+            prev = json.loads(OUT_JSON.read_text(encoding="utf-8"))
+        except Exception:
+            prev = {}
+    doc: dict = {
+        "sites": sites,
+        "parses": prev.get("parses", []),
+        "flags": prev.get("flags", []),
+        "lives": prev.get("lives", []),
+    }
     if spider:
         doc["spider"] = spider
     OUT_JSON.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
