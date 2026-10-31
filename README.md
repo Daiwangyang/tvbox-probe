@@ -39,25 +39,46 @@
 - **失败放行** jar 下载失败时按“可能有”处理，不误杀
 - 全挂也不怕，上一次的 `my.json` 还在
 
-## 访问（重要）
+## 访问
 
-仓库公开，raw 在国内又常抖，所以套一层 Cloudflare Worker 中转。
+先说结论：**投影仪上填镜像地址，不要填 `workers.dev`。**
 
-Worker 干两件事：**自己设 `max-age=60` 压住 CDN 缓存**（jsDelivr 对分支引用缓存约 12 小时，不干预的话探测频率白做），**用 `sig` 挡一下白嫖**。
+`workers.dev` 这个域名国内基本不可达（实测直连、走代理、DoH 都拿不到，20 秒超时），而 GitHub raw 本身也是 15 秒不响应。能用的只有第三方反代。实测：
+
+| 通道 | 结果 |
+| --- | --- |
+| `raw.githubusercontent.com` | 15s 超时 |
+| `workers.dev` | 不通 |
+| `cdn.jsdelivr.net` | 通，但发 `s-maxage=43200`，purge 后 4 分钟仍是旧文件 |
+| `gh-proxy.com` | 通，0.7–2.9s，`max-age=60`，**内容实时** |
+| `ghfast.top` | 通，1.4s，可作备用 |
+
+所以要填的是：
+
+```
+https://gh-proxy.com/https://raw.githubusercontent.com/Daiwangyang/tvbox-probe/main/my.json
+```
+
+`gh-proxy.com` 挂了就换 `ghfast.top` 或 `ghproxy.net`，把域名替换掉即可，路径不变。
+
+### 那 Worker 还要不要
+
+要，但只当加 `sig` 的壳。它按顺序试五家上游（反代优先，raw 和 jsDelivr 兜底），每 8 秒换下一家，自己发 `max-age=60`。缺点是 `workers.dev` 国内不通，所以只有在你另配了自定义域名、或客户端能走代理时才有用。
 
 ```bash
 cd worker
-npx wrangler secret put SIGN        # 自定一串密码
+npx wrangler secret put SIGN
 npx wrangler deploy
+# → https://<你的worker>.workers.dev/my.json?sig=<SIGN>
 ```
 
-之后的配置地址：
+不套 Worker 就等于不设防：仓库公开，谁看到地址都能用。想挡人的话，把上面那条镜像地址里的 `Daiwangyang` 换成别人猜不到的 fork 也行。
 
-```
-https://<你的worker>.workers.dev/my.json?sig=<SIGN>
-```
+## 缓存这一关别绕开
 
-免费额度每天 10 万次，够用。别人就算翻到这个仓库，不知道 `sig` 也拉不到能用的地址；`sig` 一旦漏出去，改个 `SIGN` 重发即可。
+成品要从 GitHub 拉到投影仪，中间隔着一层 CDN。jsDelivr 对分支引用缓存 12 小时，**每 30 分钟探一轮、中间 11 个半小时拿的还是旧文件**，探测频率白做。
+
+`purge.py` 每轮提交后主动推 `purge.jsdelivr.net` 清缓存（见 workflow 最后一步）。实测 purge 接口虽然返回 `finished`，边缘节点仍会滞后几分钟——这也是最终选反代而不是 jsDelivr 的原因：反代发的是 `max-age=60`，天然对齐轮次。
 
 ## 本地跑
 
@@ -79,6 +100,7 @@ python playtest.py        # 播放实测(需要 ffmpeg)
 | `sites.json` | 手工基线，优先保留 |
 | `play.json` | 播放实测结果 |
 | `quarantine.json` | 淘汰计数 |
+| `purge.py` | 推 jsDelivr 清缓存，workflow 自动调 |
 
 ## 参数
 
@@ -90,12 +112,7 @@ python playtest.py        # 播放实测(需要 ffmpeg)
 - 引流判定是启发式，会漏；有些站是首次要求、之后放行，单轮判不准
 - jar 只能校验类是否存在，类在但站死了看不出来
 - 直播源(`lives`)没做
+- 依赖第三方反代，它们单点、说关就关；挂了要手动换域名
 - 公开仓库 Actions 不限时长；转回私有就只剩 2000 分钟/月，得把 cron 退回 `0 */4`
-
-## 缓存这一关别绕开
-
-成品要从 GitHub 拉到投影仪。直连 `raw.githubusercontent.com` 国内经常超时；走 `cdn.jsdelivr.net` 能通，但它对分支引用缓大约 12 小时——每 30 分钟探一轮，中间 11 个半小时客户端拿的还是旧文件。所以**必须**经过 Worker，由 Worker 自己发 `Cache-Control: max-age=60`。
-
-不改缓存的话不会坏，只是「半小时一轮」等于白做，实际感知退化成半天一更新。
 
 片源均为未授权，脚本只汇总接口 URL，不托管内容。
