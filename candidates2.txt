@@ -1,0 +1,24 @@
+# 从公开配置挖出的新候选
+http://home.jundie.top:666/JS/dr_py/libs/drpy.min.js    # 低端影视(DRPY)
+http://xhztv.top/xhz/js/lib/drpy2.min.js    # 🐯虎牙直播
+http://xhztv.top/xhz/js/lib/drpy.min.js    # JRKAN直播
+http://c.小胡.icu/api.php/provide/vod/    # 👒┃小胡┃资源┃
+https://suoniapi.com/api.php/provide/vod/?ac=list    # 🐉┃索尼┃高清
+https://49zy1.com/api.php/provide/vod/?ac=list    # 🦁┃四九┃资源
+https://www.feisuzyapi.com/api.php/provide/vod/?ac=list    # 🛰️飞速┃采集
+https://caiji.qhzyapi.com/api.php/provide/vod/    # 🐯┃奇虎┃采集
+https://kekezy1.com/api.php/provide/vod/?ac=list    # ⛱┃可可┃采集
+https://mv.wogg.link/mv/vod    # 🎶明星┃MV
+http://124.223.214.31:8/api/lib/drpy2.min.js    # 微信小程序搜【淘软件】获取最新接口
+https://file.zhangyichi.dev/uploads/695cb6347d0b1_1767683636.js    # 腾腾｜视频
+https://git.yylx.win/raw.githubusercontent.com/PizazzGY/NewTVBox/main/movie/py/XYDJ.py    # 星芽｜短剧
+https://git.yylx.win/raw.githubusercontent.com/PizazzGY/NewTVBox/main/movie/py/JWDJ.py    # 剧王｜短剧
+https://catbox.n13.club/t4/heihu.php    # 🐻黑狐┃影视
+https://cjhwba.com/api.php/provide/vod/?ac=list    # 🥘微吧┃影视
+https://suoniapi.com/api.php/provide/vod/from/snm3u8/    # 🎊索尼┃资源
+https://caiji.kczyapi.com/api.php/provide/vod/    # 🚄快车┃影视
+https://api.tiankongapi.com/api.php/provide/vod/    # 🔮星空┃影视
+https://catbox.n13.club/t4/cntv.php    # 🇨🇳央视┃节目
+https://catbox.n13.club/t4/bili.php?id=bMTV    # 🏧MTV┃大全
+https://catbox.n13.club/t4/tangdou.php    # 🍬糖豆┃广场舞
+https://catbox.n13.club/t4/qingting.php    # 🐝蜻蜓┃广播

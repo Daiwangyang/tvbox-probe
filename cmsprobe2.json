@@ -1,0 +1,210 @@
+[
+ {
+  "api": "https://suoniapi.com/api.php/provide/vod/",
+  "note": "🐉┃索尼┃高清",
+  "ms": 1631,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 148051,
+  "classes": 61,
+  "search_ms": 790,
+  "search_hits": 0,
+  "search": false,
+  "ok": true
+ },
+ {
+  "api": "https://suoniapi.com/api.php/provide/vod/from/snm3u8/",
+  "note": "🎊索尼┃资源",
+  "ms": 2058,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 147002,
+  "classes": 61,
+  "search_ms": 2741,
+  "search_hits": 0,
+  "search": false,
+  "ok": true
+ },
+ {
+  "api": "http://c.小胡.icu/api.php/provide/vod/",
+  "note": "👒┃小胡┃资源┃",
+  "ms": 0,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://catbox.n13.club/t4/qingting.php/",
+  "note": "🐝蜻蜓┃广播",
+  "ms": 4,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://catbox.n13.club/t4/tangdou.php/",
+  "note": "🍬糖豆┃广场舞",
+  "ms": 20,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://www.feisuzyapi.com/api.php/provide/vod/",
+  "note": "🛰️飞速┃采集",
+  "ms": 21,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "http://124.223.214.31:8/api/lib/drpy2.min.js/",
+  "note": "微信小程序搜【淘软件】获取最新接口",
+  "ms": 32,
+  "status": 404,
+  "ok": false,
+  "why": "http 404"
+ },
+ {
+  "api": "https://catbox.n13.club/t4/bili.php/?id=bMTV",
+  "note": "🏧MTV┃大全",
+  "ms": 37,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://catbox.n13.club/t4/cntv.php/",
+  "note": "🇨🇳央视┃节目",
+  "ms": 37,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://catbox.n13.club/t4/heihu.php/",
+  "note": "🐻黑狐┃影视",
+  "ms": 39,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://49zy1.com/api.php/provide/vod/",
+  "note": "🦁┃四九┃资源",
+  "ms": 41,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://kekezy1.com/api.php/provide/vod/",
+  "note": "⛱┃可可┃采集",
+  "ms": 44,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://caiji.qhzyapi.com/api.php/provide/vod/",
+  "note": "🐯┃奇虎┃采集",
+  "ms": 45,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "http://home.jundie.top:666/JS/dr_py/libs/drpy.min.js/",
+  "note": "低端影视(DRPY)",
+  "ms": 118,
+  "status": 401,
+  "ok": false,
+  "why": "http 401"
+ },
+ {
+  "api": "http://xhztv.top/xhz/js/lib/drpy.min.js/",
+  "note": "JRKAN直播",
+  "ms": 355,
+  "status": 404,
+  "ok": false,
+  "why": "http 404"
+ },
+ {
+  "api": "http://xhztv.top/xhz/js/lib/drpy2.min.js/",
+  "note": "🐯虎牙直播",
+  "ms": 358,
+  "status": 404,
+  "ok": false,
+  "why": "http 404"
+ },
+ {
+  "api": "https://cjhwba.com/api.php/provide/vod/",
+  "note": "🥘微吧┃影视",
+  "ms": 951,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://git.yylx.win/raw.githubusercontent.com/PizazzGY/NewTVBox/main/movie/py/XYDJ.py/",
+  "note": "星芽｜短剧",
+  "ms": 1236,
+  "status": 404,
+  "ok": false,
+  "why": "http 404"
+ },
+ {
+  "api": "https://mv.wogg.link/mv/vod/",
+  "note": "🎶明星┃MV",
+  "ms": 1263,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://caiji.kczyapi.com/api.php/provide/vod/",
+  "note": "🚄快车┃影视",
+  "ms": 1575,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://api.tiankongapi.com/api.php/provide/vod/",
+  "note": "🔮星空┃影视",
+  "ms": 8013,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://git.yylx.win/raw.githubusercontent.com/PizazzGY/NewTVBox/main/movie/py/JWDJ.py/",
+  "note": "剧王｜短剧",
+  "ms": 8015,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://file.zhangyichi.dev/uploads/695cb6347d0b1_1767683636.js/",
+  "note": "腾腾｜视频",
+  "ms": 8379,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ }
+]

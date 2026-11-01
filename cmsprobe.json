@@ -1,0 +1,627 @@
+[
+ {
+  "api": "http://ffzy5.tv/api.php/provide/vod/",
+  "note": "非凡资源",
+  "ms": 349,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 98900,
+  "classes": 31,
+  "search_ms": 1163,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
+  "note": "电影天堂",
+  "ms": 565,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 84925,
+  "classes": 32,
+  "search_ms": 951,
+  "search_hits": 7,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/",
+  "note": "电影天堂https",
+  "ms": 668,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 84925,
+  "classes": 32,
+  "search_ms": 1468,
+  "search_hits": 7,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://360zy.com/api.php/provide/vod/",
+  "note": "360资源",
+  "ms": 875,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 74194,
+  "classes": 51,
+  "search_ms": 1012,
+  "search_hits": 3,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://api.ffzyapi.com/api.php/provide/vod/",
+  "note": "非凡备用",
+  "ms": 908,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 98900,
+  "classes": 31,
+  "search_ms": 2364,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://cj.lziapi.com/api.php/provide/vod/",
+  "note": "量子资源",
+  "ms": 925,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 161990,
+  "classes": 40,
+  "search_ms": 933,
+  "search_hits": 1673,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://p2100.net/api.php/provide/vod/",
+  "note": "飘零资源",
+  "ms": 1112,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 100935,
+  "classes": 27,
+  "search_ms": 1211,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://api.wujinapi.com/api.php/provide/vod/",
+  "note": "无尽备用",
+  "ms": 1194,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 124048,
+  "classes": 63,
+  "search_ms": 2501,
+  "search_hits": 9,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://jszyapi.com/api.php/provide/vod/",
+  "note": "极速资源",
+  "ms": 1242,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 115436,
+  "classes": 48,
+  "search_ms": 1598,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://subocaiji.com/api.php/provide/vod/",
+  "note": "速播资源",
+  "ms": 1269,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 117029,
+  "classes": 44,
+  "search_ms": 2728,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://www.huyaapi.com/api.php/provide/vod/",
+  "note": "虎牙资源",
+  "ms": 1305,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 116025,
+  "classes": 44,
+  "search_ms": 1738,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
+  "note": "魔都资源",
+  "ms": 1375,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 91125,
+  "classes": 42,
+  "search_ms": 1440,
+  "search_hits": 3,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://api.apibdzy.com/api.php/provide/vod/",
+  "note": "百度云",
+  "ms": 1415,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 49514,
+  "classes": 54,
+  "search_ms": 1962,
+  "search_hits": 2,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://api.wujinapi.me/api.php/provide/vod/",
+  "note": "无尽资源",
+  "ms": 1534,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 124048,
+  "classes": 63,
+  "search": false,
+  "search_hits": 0,
+  "ok": true
+ },
+ {
+  "api": "https://hhzyapi.com/api.php/provide/vod/",
+  "note": "火狐资源",
+  "ms": 1624,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 116195,
+  "classes": 48,
+  "search_ms": 1446,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+  "note": "光速资源",
+  "ms": 1714,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 117102,
+  "classes": 44,
+  "search_ms": 1763,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://bfzyapi.com/api.php/provide/vod/",
+  "note": "暴风资源",
+  "ms": 1805,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 170092,
+  "classes": 49,
+  "search_ms": 2764,
+  "search_hits": 1628,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://tyyszy.com/api.php/provide/vod/",
+  "note": "天涯资源",
+  "ms": 1977,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 73457,
+  "classes": 39,
+  "search_ms": 893,
+  "search_hits": 0,
+  "search": false,
+  "ok": true
+ },
+ {
+  "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+  "note": "红牛资源",
+  "ms": 3134,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 116510,
+  "classes": 44,
+  "search_ms": 1428,
+  "search_hits": 8,
+  "search": true,
+  "ok": true
+ },
+ {
+  "api": "https://api.tmzy.tv/api.php/provide/vod/",
+  "note": "TM资源",
+  "ms": 44,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.88zy.tv/api.php/provide/vod/",
+  "note": "88资源",
+  "ms": 46,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.1080zy.tv/api.php/provide/vod/",
+  "note": "1080资源",
+  "ms": 52,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.maotaizy.cc/api.php/provide/vod/",
+  "note": "茅台资源",
+  "ms": 70,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://cj.ukuapi.com/api.php/provide/vod/",
+  "note": "优酷资源",
+  "ms": 73,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.zbzy.tv/api.php/provide/vod/",
+  "note": "直播资源",
+  "ms": 78,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://cj.rycjapi.com/api.php/provide/vod/",
+  "note": "如意资源",
+  "ms": 113,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.hkyyapi.com/api.php/provide/vod/",
+  "note": "好看资源",
+  "ms": 127,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://zy.cenguigui.cn/api.php/provide/vod/",
+  "note": "岑鬼资源",
+  "ms": 163,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.ffzy.tv/api.php/provide/vod/",
+  "note": "非凡TV",
+  "ms": 178,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.qinglongzy.com/api.php/provide/vod/",
+  "note": "青龙资源",
+  "ms": 215,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.ukuapi.com/api.php/provide/vod/",
+  "note": "优酷备用",
+  "ms": 223,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.yuja88.com/api.php/provide/vod/",
+  "note": "优佳资源",
+  "ms": 236,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.jisuzy.com/api.php/provide/vod/",
+  "note": "极速备用",
+  "ms": 239,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.leitingzy.com/api.php/provide/vod/",
+  "note": "雷霆资源",
+  "ms": 254,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.doubanapi.com/api.php/provide/vod/",
+  "note": "豆瓣资源",
+  "ms": 272,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.zuidazy.com/api.php/provide/vod/",
+  "note": "最大资源",
+  "ms": 280,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.91zy.cc/api.php/provide/vod/",
+  "note": "91资源",
+  "ms": 297,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.1080pzy.com/api.php/provide/vod/",
+  "note": "1080P",
+  "ms": 314,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.langlangzy.com/api.php/provide/vod/",
+  "note": "朗朗资源",
+  "ms": 317,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.leduozy.com/api.php/provide/vod/",
+  "note": "乐多资源",
+  "ms": 347,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.1080zy.com/api.php/provide/vod/",
+  "note": "1080备用",
+  "ms": 405,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.kuaikan-api.com/api.php/provide/vod/",
+  "note": "快看资源",
+  "ms": 438,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://zy.xmm9.com/api.php/provide/vod/",
+  "note": "小猫咪",
+  "ms": 442,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.yszyapi.com/api.php/provide/vod/",
+  "note": "影视资源",
+  "ms": 449,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.kanzyw.com/api.php/provide/vod/",
+  "note": "看片",
+  "ms": 452,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.yueyuezy.com/api.php/provide/vod/",
+  "note": "月月资源",
+  "ms": 472,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.duoduozy.com/api.php/provide/vod/",
+  "note": "多多资源",
+  "ms": 507,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.haitangzy.com/api.php/provide/vod/",
+  "note": "海棠资源",
+  "ms": 512,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.kuyunzy.com/api.php/provide/vod/",
+  "note": "酷云资源",
+  "ms": 537,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.sonzyapi.com/api.php/provide/vod/",
+  "note": "索尼资源",
+  "ms": 547,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://json.heimuer.xyz/api.php/provide/vod/",
+  "note": "黑木耳",
+  "ms": 915,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://api.52api.cn/api.php/provide/vod/",
+  "note": "52API",
+  "ms": 919,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.xiaomizy.com/api.php/provide/vod/",
+  "note": "小米资源",
+  "ms": 1058,
+  "status": 404,
+  "ok": false,
+  "why": "http 404"
+ },
+ {
+  "api": "https://caiji.kczyapi.com/api.php/provide/vod/",
+  "note": "快车资源",
+  "ms": 1067,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://api.ruyicy.com/api.php/provide/vod/",
+  "note": "如意备用",
+  "ms": 1297,
+  "status": 404,
+  "ok": false,
+  "why": "http 404"
+ },
+ {
+  "api": "https://api.xinlangapi.com/api.php/provide/vod/",
+  "note": "新浪资源",
+  "ms": 1992,
+  "status": 403,
+  "ok": false,
+  "why": "http 403"
+ },
+ {
+  "api": "https://api.51zy.cc/api.php/provide/vod/",
+  "note": "51资源",
+  "ms": 2682,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://collect.wolongzyw.com/api.php/provide/vod/",
+  "note": "卧龙资源",
+  "ms": 3116,
+  "status": 200,
+  "type": 1,
+  "kind": "bad",
+  "total": 0,
+  "classes": 0,
+  "ok": false,
+  "why": "非CMS输出"
+ },
+ {
+  "api": "https://api.hongniuzy.com/api.php/provide/vod/",
+  "note": "红牛备用",
+  "ms": 8004,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.wwzy.tv/api.php/provide/vod/",
+  "note": "弯弯资源",
+  "ms": 8015,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.tiankongapi.com/api.php/provide/vod/",
+  "note": "天空资源",
+  "ms": 8023,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ },
+ {
+  "api": "https://api.duboku.com/api.php/provide/vod/",
+  "note": "独播库",
+  "ms": 10151,
+  "status": -1,
+  "ok": false,
+  "why": "http -1"
+ }
+]

@@ -478,7 +478,7 @@ export default {
     // 带 sig 的响应缓存本身分不开、也不该被别的请求复用,所以用 Cache API
     // 自己存一份。不带 sig 时 Cache-Control 头只是给浏览器看的,边缘不一定会缓存。
     // key 里带 KV 版本号:改了缓存策略就把它加一,免得被旧条目按旧 TTL 卡住。
-    const KV = "v5";
+    const KV = "v6";
     const cache = caches.default;
     const cacheKey = new Request(new URL(`/${KV}${filePath}`, url.origin).toString());
     const hit = await cache.match(cacheKey);
