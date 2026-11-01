@@ -65,10 +65,10 @@ def main() -> None:
         if not cfg:
             continue
         if cfg.get("_links"):
-            sub += cfg["_links"][:6]
+            sub += cfg["_links"]
             continue
         collect(cfg, s, acc)
-    sub = list(dict.fromkeys(sub))[:60]
+    sub = list(dict.fromkeys(sub))[:200]
     print(f"子仓 {len(sub)} 条")
     if sub:
         with ThreadPoolExecutor(max_workers=12) as ex:

@@ -98,10 +98,7 @@ def load_seeds() -> list[tuple[str, str]]:
             if s.get("type", 0) in (0, 1) and api.startswith("http") \
                     and "cf.ddngo.space" not in api:
                 out[api] = s.get("name", "?")
-    for fn in ("cmsprobe.json", "cmsprobe2.json"):
-        p = ROOT / fn
-        if not p.exists():
-            continue
+    for p in sorted(ROOT.glob("cmsprobe*.json")):
         for r in json.loads(p.read_text(encoding="utf-8")):
             if r.get("ok") and r.get("api"):
                 out.setdefault(r["api"], r.get("note", ""))

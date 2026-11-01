@@ -1,53 +1,17 @@
 {
  "sites": [
   {
-   "key": "s_5e623fde55",
-   "name": "🏗建安·147ms",
+   "key": "s_7d7654e3d9",
+   "name": "🎯猫眼(3.4万)·225ms",
    "type": 0,
-   "api": "http://154.219.117.232:9981/jacloudapi.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_4358685bfc",
-   "name": "🍀非凡·298ms",
-   "type": 0,
-   "api": "http://ffzy5.tv/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_f93b6d4dd2",
-   "name": "🎬电影天堂·331ms",
-   "type": 0,
-   "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_e1fb7e3f23",
-   "name": "🦚360·399ms",
-   "type": 0,
-   "api": "https://360zy.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_b9f3aa6a8d",
-   "name": "🥑量子·473ms",
-   "type": 0,
-   "api": "https://cj.lziapi.com/api.php/provide/vod/",
+   "api": "https://api.maoyanapi.top/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_b315a17a61",
-   "name": "🍀非凡⑵·629ms",
+   "name": "🍀非凡(9.9万)·329ms",
    "type": 0,
    "api": "http://cj.ffzyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -55,26 +19,53 @@
    "filter": 1
   },
   {
-   "key": "s_1b411b52e2",
-   "name": "🌊无尽·834ms",
+   "key": "s_f93b6d4dd2",
+   "name": "🎬电影天堂(8.5万)·337ms",
    "type": 0,
-   "api": "https://api.wujinapi.com/api.php/provide/vod/",
+   "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_2e5b1dffbd",
-   "name": "🐯虎牙·877ms",
+   "key": "s_b9f3aa6a8d",
+   "name": "🥑量子(16万)·401ms",
    "type": 0,
-   "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8/",
+   "api": "https://cj.lziapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_d8d52255b1",
+   "name": "🔰金鹰(12万)·487ms",
+   "type": 0,
+   "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_b6d1253152",
+   "name": "🦊火狐(12万)·735ms",
+   "type": 0,
+   "api": "https://hhzyapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_e1fb7e3f23",
+   "name": "🦚360(7.4万)·805ms",
+   "type": 0,
+   "api": "https://360zy.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_86eb60a6ce",
-   "name": "🎀极速·889ms",
+   "name": "🎀极速(12万)·833ms",
    "type": 0,
    "api": "https://jszyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -83,7 +74,7 @@
   },
   {
    "key": "s_1dc3ecbe6d",
-   "name": "🐳巨量·901ms",
+   "name": "🐳巨量(35万)·889ms",
    "type": 0,
    "api": "https://api.juliang.live/api/provide/vod/",
    "searchable": 1,
@@ -91,26 +82,17 @@
    "filter": 1
   },
   {
-   "key": "s_b6d1253152",
-   "name": "🦊火狐·903ms",
+   "key": "s_297afcf867",
+   "name": "📦最大(13万)·908ms",
    "type": 0,
-   "api": "https://hhzyapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_2a8df3afcf",
-   "name": "🍃飘零·1037ms",
-   "type": 0,
-   "api": "https://p2100.net/api.php/provide/vod/",
+   "api": "https://api.zuidapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_7773f447e2",
-   "name": "🐂红牛·1052ms",
+   "name": "🐂红牛(12万)·909ms",
    "type": 0,
    "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
    "searchable": 1,
@@ -118,44 +100,44 @@
    "filter": 1
   },
   {
-   "key": "s_08291d2be0",
-   "name": "🦔暴风·1052ms",
+   "key": "s_2a8df3afcf",
+   "name": "🍃飘零(10万)·928ms",
    "type": 0,
-   "api": "https://bfzyapi.com/api.php/provide/vod/",
+   "api": "https://p2100.net/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_d8d52255b1",
-   "name": "🔰金鹰·1081ms",
+   "key": "s_42d31afe54",
+   "name": "📺爱奇艺(7万)·1110ms",
    "type": 0,
-   "api": "https://jyzyapi.com/provide/vod/",
+   "api": "https://iqiyizyapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_c3389de107",
-   "name": "🎏百度云·1094ms",
+   "key": "s_3cd3fe9036",
+   "name": "💨光速(12万)·1118ms",
    "type": 0,
-   "api": "https://api.apibdzy.com/api.php/provide/vod/",
+   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_e48ca0359d",
-   "name": "📦最大·1105ms",
+   "key": "s_1b411b52e2",
+   "name": "🌊无尽(12万)·1136ms",
    "type": 0,
-   "api": "https://zuida.xyz/api.php/provide/vod/",
+   "api": "https://api.wujinapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_459dfdcfb4",
-   "name": "🏙魔都·1357ms",
+   "name": "🏙魔都(9.1万)·1196ms",
    "type": 0,
    "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
    "searchable": 1,
@@ -163,8 +145,35 @@
    "filter": 1
   },
   {
+   "key": "s_3b3caedfe6",
+   "name": "🐰玉兔(22万)·1204ms",
+   "type": 0,
+   "api": "https://apiyutu.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_2e5b1dffbd",
+   "name": "🐯虎牙(12万)·1228ms",
+   "type": 0,
+   "api": "https://www.huyaapi.com/api.php/provide/vod/at/json/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_c3389de107",
+   "name": "🎏百度云(5万)·1303ms",
+   "type": 0,
+   "api": "https://api.apibdzy.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_82b8565b6e",
-   "name": "🚄速播·1485ms",
+   "name": "🚄速播(12万)·1517ms",
    "type": 0,
    "api": "https://subocaiji.com/api.php/provide/vod/",
    "searchable": 1,
@@ -172,10 +181,10 @@
    "filter": 1
   },
   {
-   "key": "s_3cd3fe9036",
-   "name": "💨光速·1726ms",
+   "key": "s_963f8aa503",
+   "name": "📰新浪(12万)·1773ms",
    "type": 0,
-   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+   "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1

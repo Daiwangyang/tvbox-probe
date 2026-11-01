@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "play.json"
 SECONDS = 6              # 实际拉流秒数
 WORKERS = 4              # ffmpeg 吃 CPU,并发别开大
-MAX_CANDIDATES = 14      # 只测初筛后的前 N 个
+MAX_CANDIDATES = 30      # 只测初筛后的前 N 个
 
 
 def _urls_from_play_url(txt: str) -> list[str]:
@@ -140,14 +140,18 @@ def main() -> int:
         return (0 if r.get("ok") else 1, -r.get("frames", 0))
 
     ordered = sorted(sites, key=rank)
+    # 排序权归 build.py(按延迟),这里只在显式要求时才按帧数重排
+    reorder = "--reorder" in sys.argv
     got = sum(1 for r in results.values() if r.get("ok"))
     # 重写前把 spider 等全局字段原样带上,csp 站全靠它
-    doc = json.loads((ROOT / "my.json").read_text(encoding="utf-8"))
-    doc["sites"] = ordered
-    (ROOT / "my.json").write_text(
-        json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8"
-    )
-    print(f"\n能播 {got}/{len(results)},已按流畅度重排 my.json")
+    if reorder:
+        doc = json.loads((ROOT / "my.json").read_text(encoding="utf-8"))
+        doc["sites"] = ordered
+        (ROOT / "my.json").write_text(
+            json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"\n能播 {got}/{len(results)},已按流畅度重排 my.json")
+    else:
+        print(f"\n能播 {got}/{len(results)},明细写入 play.json(配置顺序未动)")
     return 0
 
 

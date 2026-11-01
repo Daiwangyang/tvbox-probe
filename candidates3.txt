@@ -1,0 +1,16 @@
+# 补充候选(来源:公开资源站索引 + LunaTV 每日检测清单)
+https://hongniuzy2.com/api.php/provide/vod/from/hnm3u8    # 红牛 hnm3u8 线
+https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8    # 量子 lzm3u8 线
+https://360zyzz.com/api.php/provide/vod                  # 360 新域名
+http://sdzyapi.com/api.php/provide/vod/from/sdm3u8       # 闪电资源
+http://jyzyapi.com/provide/vod/from/jinyingm3u8          # 金鹰 m3u8 线
+http://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8 # 光速 m3u8 线
+https://aosikazy.com/api.php/provide/vod                 # 奥斯卡资源
+https://m3u8.apiyhzy.com/api.php/provide/vod/            # 樱花资源
+https://api.ddapi.cc/api.php/provide/vod                 # 滴滴资源
+https://apiyutu.com/api.php/provide/vod                  # 玉兔资源
+https://api.bwzyz.com/api.php/provide/vod                # 百万资源
+https://www.jingpinx.com/api.php/provide/vod             # 精品资源
+https://apilj.com/api.php/provide/vod                    # 辣椒资源
+https://shayuapi.com/api.php/provide/vod                 # 鲨鱼资源
+https://xingba111.com/api.php/provide/vod                # 星吧资源
