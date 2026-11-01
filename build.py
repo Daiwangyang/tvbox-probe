@@ -24,6 +24,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 ROOT = Path(__file__).resolve().parent
 RANK = ROOT / "rank.json"
 MY = ROOT / "my.json"
+STATE = ROOT / "build_state.json"   # 每轮实测的沉淀,用于容错
 
 # 品牌白名单:host 关键字 -> (emoji, 展示名)
 # 不在表里的源一律不收;同一展示名出现多次时自动取综合最优的一条线路。
@@ -58,6 +59,8 @@ BRAND: dict[str, tuple[str, str]] = {
 # 魔都改用 caiji.moduapi.cc 线路(www.mdzyapi.com 三集里有一集超时)
 MIN_TOTAL = 30000        # 片库低于这个数不收
 FAKE_SEARCH_RATIO = 0.9  # 搜索结果数 ≥ 片库总量 90% 视为"忽略关键词"
+DROP_AFTER = 3           # 连续几轮测不到才真正摘掉这个站
+STALE_PENALTY = 5000     # 本轮没测到的站,排序时压到后面
 
 # 手工维护站点:用实测 ms 参与排序
 FIXED = [
@@ -98,6 +101,23 @@ def wan(total: int) -> str:
     return f"{v:.0f}万" if v >= 10 else f"{v:.1f}万".replace(".0万", "万")
 
 
+def med(hist: list[int]) -> int:
+    """取中位数,抵消单轮抖动。"""
+    v = sorted(x for x in hist if isinstance(x, int) and x > 0)
+    if not v:
+        return 99999
+    return v[len(v) // 2]
+
+
+def load_state() -> dict[str, dict]:
+    if not STATE.exists():
+        return {}
+    try:
+        return json.loads(STATE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def main() -> None:
     rows = json.loads(RANK.read_text(encoding="utf-8")) if RANK.exists() else []
     prev = json.loads(MY.read_text(encoding="utf-8")) if MY.exists() else {}
@@ -105,36 +125,72 @@ def main() -> None:
     old_host = {host(s.get("api", "")): s.get("key")
                 for s in prev.get("sites", []) if str(s.get("api", "")).startswith("http")}
 
-    best: dict[str, dict] = {}
+    # 每轮结果沉淀成状态:某站这轮没测通就先按上轮数据保留,
+    # 连续 DROP_AFTER 轮都不通才摘掉。否则一次网络抖动就能把配置掏空。
+    # state 按完整接口地址存,不按域名 —— 同一家有多条线路时,
+    # 按域名存会被后测的那条覆盖,容易把快的线路数据冲掉。
+    state = load_state()
+    seen: set[str] = set()
     for r in rows:
-        if not r.get("ok") or r.get("total", 0) < MIN_TOTAL:
+        if not r.get("ok"):
             continue
-        brand = next((v for k, v in BRAND.items() if k in host(r["api"])), None)
+        k = clean_api(r["api"])
+        seen.add(k)
+        # 留最近 3 次的实测值取中位数:单轮网络抖动(某站忽快忽慢)不会让顺序乱跳
+        hist = ((state.get(k) or {}).get("hist") or [])[-2:] + [r["ms"]]
+        state[k] = {
+            "api": k, "ms": med(hist), "raw": r["ms"], "hist": hist,
+            "total": r.get("total", 0), "detail_ms": r.get("detail_ms"),
+            "search_hits": r.get("search_hits", 0), "fail": 0,
+        }
+    dropped: list[str] = []
+    for k in list(state):
+        if k in seen:
+            continue
+        state[k]["fail"] = state[k].get("fail", 0) + 1
+        if state[k]["fail"] >= DROP_AFTER:
+            dropped.append(f"{host(k)} 连续{state[k]['fail']}轮不通")
+            del state[k]
+    STATE.write_text(json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    # 全挂说明是本轮网络的问题,不是站的问题 —— 这时不打乱顺序,照旧排
+    fresh = sum(1 for r in state.values() if r.get("fail", 0) == 0)
+    pen_all = 0 if fresh == 0 else STALE_PENALTY
+
+    best: dict[str, dict] = {}
+    for k, r in state.items():
+        if r["total"] < MIN_TOTAL:
+            continue
+        brand = next((v for kw, v in BRAND.items() if kw in host(k)), None)
         if not brand:
             continue
-        score = r["ms"] * 0.6 + (r.get("detail_ms") or r["ms"]) * 0.4
+        stale = k not in seen
+        # 本轮没测到的站压低优先级:有新鲜数据的线路永远排在它前面
+        pen = pen_all if stale else 0
+        score = (r["ms"] + pen) * 0.6 + ((r.get("detail_ms") or r["ms"]) + pen) * 0.4
         cur = best.get(brand[1])
         if cur and cur["score"] <= score:
             continue
         best[brand[1]] = {
-            "score": score, "ms": r["ms"], "api": clean_api(r["api"]),
-            "total": r.get("total", 0), "emoji": brand[0],
-            "fake": r.get("search_hits", 0) >= r.get("total", 0) * FAKE_SEARCH_RATIO,
+            "score": score, "ms": r["ms"], "api": r["api"],
+            "total": r["total"], "emoji": brand[0], "stale": stale,
+            "fake": r.get("search_hits", 0) >= r["total"] * FAKE_SEARCH_RATIO,
         }
 
     direct = []
     for name, p in best.items():
         searchable = 0 if p["fake"] else 1
+        mark = "~" if p["stale"] else ""      # ~ = 本轮没测到,数字是上轮的
         direct.append({
             "key": old_host.get(host(p["api"])) or key_of(p["api"]),
-            "name": f"{p['emoji']}{name}({wan(p['total'])})·{p['ms']}ms",
+            "name": f"{p['emoji']}{name}({wan(p['total'])})·{p['ms']}ms{mark}",
             "type": 0,
             "api": p["api"],
             # 搜索时忽略关键词的站不放进搜索,免得结果里全是无关片
             "searchable": searchable,
             "quickSearch": searchable,
             "filter": 1,
-            "_ms": p["ms"],
+            "_ms": p["ms"] + (pen_all if p["stale"] else 0),
             "_tot": p["total"],
         })
 
@@ -162,13 +218,17 @@ def main() -> None:
         doc["spider"] = prev["spider"]
     MY.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    tot = sum(s["_tot"] for s in direct) if False else sum(
-        p["total"] for p in best.values())
+    tot = sum(p["total"] for p in best.values())
+    stale = sum(1 for p in best.values() if p["stale"])
     print(f"直连 {len(direct)} + 弹幕仓 1 + 蜘蛛 {len(csp)} = {len(doc['sites'])} 站")
     print(f"直连站片库合计 {tot/10000:.0f} 万(各家有重叠,非去重净量)")
+    if stale:
+        print(f"其中 {stale} 个本轮没测通,按上轮数据保留(名字带 ~)")
     for s in merged:
         flag = "" if s.get("searchable", 1) else "  [不参与搜索]"
         print(f"  {s['name']}{flag}")
+    for d in dropped:
+        print(f"  淘汰 {d}")
     print(f"→ {MY}")
 
 
