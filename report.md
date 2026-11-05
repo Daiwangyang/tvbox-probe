@@ -1,6 +1,6 @@
-# 探测结果 2026-11-05 16:47
+# 探测结果 2026-11-05 22:42
 
-- 待测 327 / 达标 304 / 成品 107（含降级保留）
+- 待测 327 / 达标 305 / 成品 107（含降级保留）
 
 - 阈值 1500ms,连续 2 轮不通才淘汰
 
@@ -8,10 +8,18 @@
 
 | 延迟 | 站点 | 接口 |
 | --- | --- | --- |
-| 109ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
-| 113ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
-| 220ms | 影视 • 非凡[直连] | `http://ffzy.tv/api.php/provide/vod/` |
-| 300ms | 💓花卷┃4K💓‍ | `csp_AiNewHuaJuanGuard` |
+| 47ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
+| 70ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
+| 76ms | 🥗┃非凡┃资源 | `http://ffzy1.tv/api.php/provide/vod/` |
+| 77ms | 影视 • 非凡[直连] | `http://ffzy.tv/api.php/provide/vod/` |
+| 101ms | ikunzyapi.com | `https://ikunzyapi.com/api.php/provide/vod` |
+| 191ms | caiji.moduapi.cc | `https://caiji.moduapi.cc/api.php/provide/vod/?ac=list` |
+| 198ms | api.guangsuapi.com | `https://api.guangsuapi.com/api.php/provide/vod/` |
+| 204ms | 🕹️淘片┃采集 | `https://taopianapi.com/cjapi/mc/vod/json.html` |
+| 233ms | 🐂红牛┃采集 | `https://www.hongniuzy2.com/api.php/provide/vod/` |
+| 254ms | 影视 • 极速[直连] | `https://jszyapi.com/api.php/provide/vod/?ac=list` |
+| 262ms | 🆕非凡┃资源 | `http://cj.ffzyapi.com/api.php/provide/vod/` |
+| 263ms | 🐯虎牙采集 | `https://www.huyaapi.com/api.php/provide/vod/from/hym3u8` |
 | 300ms | 360 | `csp_SP360` |
 | 300ms | 泥巴(墙) | `csp_Nbys` |
 | 300ms | Alist(SP) | `csp_Alist` |
@@ -60,35 +68,27 @@
 | 300ms | 🎈┃国粹┃戏曲 | `csp_Bili` |
 | 300ms | 资源加载更新.... | `csp_Push` |
 | 300ms | 豆豆┃片单 | `csp_DouDouGuard` |
-| 300ms | 🗂我的云盘┃配置 | `csp_MyDriveGuard` |
-| 300ms | 👽玩偶哥哥┃4K弹幕 | `csp_WoGGGuard` |
-| 300ms | 🚀荐影┃预告片 | `csp_YGPGuard` |
-| 300ms | 🎙️易听┃音乐 | `csp_MusicGuard` |
-| 300ms | 💡聚剧┃四盘 | `csp_SeedhubGuard` |
-| 300ms | 🌞光影┃不卡 | `csp_T4Guard` |
-| 300ms | 📔厂长┃不卡 | `csp_NewCzGuard` |
-| 300ms | 🐬海绵┃不卡 | `csp_HmysGuard` |
 
 ## 弱可用 / 广告解析
 
-- 157ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
-- 275ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
-- 277ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
-- 317ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
-- 365ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
-- 371ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
-- 1497ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
-- 1607ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
-- 1689ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
-- 1760ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
+- 128ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
+- 145ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
+- 159ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
+- 170ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
+- 193ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
+- 203ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
+- 301ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
+- 598ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
+- 898ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
+- 1410ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
 
 ## 不通
 
 - 🎏百度┃采集 `https://api.apibdzy.com/api.php/provide/vod/?ac=list` — HTTPError
 - 👒┃小胡┃资源┃ `http://c.小胡.icu/api.php/provide/vod/` — URLError
-- 🐯┃奇虎┃采集 `https://caiji.qhzyapi.com/api.php/provide/vod/` — URLError
-- 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
 - 🦁┃四九┃资源 `https://49zy1.com/api.php/provide/vod/?ac=list` — URLError
+- 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
+- 🐯┃奇虎┃采集 `https://caiji.qhzyapi.com/api.php/provide/vod/` — URLError
 - ⛱┃可可┃采集 `https://kekezy1.com/api.php/provide/vod/?ac=list` — URLError
 - xh1.xn--yetu07f.icu `http://xh1.xn--yetu07f.icu/api.php/provide/vod/` — URLError
 - xzcjz.com `https://xzcjz.com/api.php/provide/vod` — URLError
