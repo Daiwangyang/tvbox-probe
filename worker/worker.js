@@ -438,6 +438,119 @@ async function handlePlay(url) {
   return res;
 }
 
+// ===================== 无损云(wsyzy) 适配层 =====================
+// api.wsyzy.net 本身就是标准 MacCMS JSON 接口,列表/详情/播放地址都是直连 m3u8,
+// 所以只补两个缺口:
+//   1. 官方把搜索关了(ac=videolist&wd= 返回"暂不支持搜索")-> 改走 wsyzy.cc 的 suggest
+//   2. 分类表里混着空父类(电影/电视剧/综艺/动漫)+ 一批成人分区 -> 重写 class 字段
+const WSY = "https://api.wsyzy.net/api.php/provide/vod/";
+const WSY_SITE = "https://wsyzy.cc";
+
+// 只保留有内容的叶子分类;1/2/3/4 是空父类(t=1 实测返回 0 条),
+// 55~61/73 是成人/擦边分区,直接丢掉
+const WSY_KEEP = [
+  [6, "动作片"], [7, "喜剧片"], [8, "爱情片"], [9, "科幻片"], [10, "恐怖片"],
+  [11, "剧情片"], [12, "战争片"], [13, "国产剧"], [14, "欧美剧"], [15, "韩剧"],
+  [16, "日剧"], [17, "港剧"], [18, "台剧"], [19, "泰剧"], [20, "纪录片"],
+  [23, "海外剧"], [25, "大陆综艺"], [26, "日韩综艺"], [27, "港台综艺"],
+  [28, "欧美综艺"], [29, "国产动漫"], [30, "日韩动漫"], [31, "欧美动漫"],
+  [39, "动画片"], [44, "港台动漫"], [45, "海外动漫"], [47, "演唱会"],
+  [48, "体育赛事"], [49, "篮球"], [50, "足球"], [52, "斯诺克"],
+  [53, "影视解说"], [54, "爽文短剧"], [62, "4K电影"], [63, "有声动漫"],
+  [64, "女频恋爱"], [65, "反转爽剧"], [66, "古装仙侠"], [67, "年代穿越"],
+  [68, "脑洞悬疑"], [69, "现代都市"], [70, "邵氏电影"], [71, "Netflix电影"],
+  [72, "Netflix自制剧"], [75, "科普学习"], [76, "漫剧"],
+];
+const WSY_CLASS = WSY_KEEP.map(function (c) {
+  return { type_id: c[0], type_name: c[1] };
+});
+
+function wsyJson(obj) {
+  return new Response(JSON.stringify(obj), {
+    status: 200,
+    headers: Object.assign({}, CORS, {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+    }),
+  });
+}
+
+async function handleWsy(url) {
+  const ac = url.searchParams.get("ac") || "list";
+  const wd = (url.searchParams.get("wd") || "").trim();
+  const ids = (url.searchParams.get("ids") || "").trim();
+
+  // ---- 搜索:官方接口不支持,拆成 suggest 拿 id + detail 拿详情 ----
+  if (wd) {
+    const su = `${WSY_SITE}/index.php/ajax/suggest?mid=1&wd=` + encodeURIComponent(wd);
+    const r = await getText(su, `${WSY_SITE}/`, 9000);
+    let items = [];
+    if (r.status === 200) {
+      try {
+        const j = JSON.parse(r.text);
+        items = (j.list || [])
+          .filter(function (x) { return x && x.id && x.name; })
+          .slice(0, 20);
+      } catch (e) {
+        /* 忽略 */
+      }
+    }
+    if (!items.length) {
+      return wsyJson({ code: 1, msg: "ok", page: 1, pagecount: 1,
+                       limit: 0, total: 0, list: [], class: WSY_CLASS });
+    }
+    // suggest 是按站点索引顺序出的,精确命中的正片常排在第 4~6 位。
+    // 按"完全相等 > 前缀 > 包含"重排,免得搜"庆余年"第一个结果是《庆余年之帝王业》这类短剧。
+    const score = function (n) {
+      if (n === wd) return 4;
+      if (n.indexOf(wd) === 0) return 3;
+      if (n.indexOf(wd) >= 0) return 2;
+      return 1;
+    };
+    items.sort(function (a, b) { return score(b.name) - score(a.name); });
+    const d = await getText(
+      `${WSY}?ac=detail&ids=` + items.map(function (x) { return x.id; }).join(","),
+      null, 16000);
+    if (d.status === 200) {
+      try {
+        const j = JSON.parse(d.text);
+        if (j && j.list) {
+          j.class = WSY_CLASS;
+          j.total = j.list.length;
+          return wsyJson(j);
+        }
+      } catch (e) {
+        /* 落到下面的空结果 */
+      }
+    }
+    return wsyJson({ code: 1, msg: "ok", page: 1, pagecount: 1,
+                     limit: 0, total: 0, list: [], class: WSY_CLASS });
+  }
+
+  // ---- 详情 / 分类列表:原样透传,只改写 class ----
+  const passthrough = ["ac", "ids", "t", "pg", "h", "from"];
+  const qs = new URLSearchParams();
+  passthrough.forEach(function (k) {
+    const v = url.searchParams.get(k);
+    if (v !== null) qs.set(k, v);
+  });
+  if (!qs.get("ac")) qs.set("ac", ac);
+
+  const r = await getText(`${WSY}?` + qs.toString(), null, 22000);
+  if (r.status !== 200) {
+    return wsyJson({ code: 0, msg: "upstream " + r.status, page: 1,
+                     pagecount: 0, limit: 0, total: 0, list: [], class: WSY_CLASS });
+  }
+  try {
+    const j = JSON.parse(r.text);
+    j.class = WSY_CLASS;
+    return wsyJson(j);
+  } catch (e) {
+    return wsyJson({ code: 0, msg: "bad json", page: 1, pagecount: 0,
+                     limit: 0, total: 0, list: [], class: WSY_CLASS });
+  }
+}
+
 // ===================== 主入口 =====================
 
 export default {
@@ -452,6 +565,9 @@ export default {
     //   2. /77 的 api 也要写进 my.json，而 my.json 在公开仓库里，
     //      写 sig 进去等于把 sig 公开，所以这里只靠「地址不公开」保护
     if (path === "/77play") return handlePlay(url);
+
+    // 无损云适配层,同样免 sig(api 地址要写进公开的 my.json)
+    if (path === "/wsy") return handleWsy(url);
 
     if (path === "/77") {
       const doc = await handleCms(url);
@@ -478,7 +594,7 @@ export default {
     // 带 sig 的响应缓存本身分不开、也不该被别的请求复用,所以用 Cache API
     // 自己存一份。不带 sig 时 Cache-Control 头只是给浏览器看的,边缘不一定会缓存。
     // key 里带 KV 版本号:改了缓存策略就把它加一,免得被旧条目按旧 TTL 卡住。
-    const KV = "v7";
+    const KV = "v8";
     const cache = caches.default;
     const cacheKey = new Request(new URL(`/${KV}${filePath}`, url.origin).toString());
     const hit = await cache.match(cacheKey);

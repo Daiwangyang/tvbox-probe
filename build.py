@@ -74,6 +74,19 @@ FIXED = [
         "filter": 1,
         "ms": 4067,          # /77 list 实测
     },
+    {
+        # 来自 github.com/88lin/video_vip 的内置资源库(无损云),
+        # 12.7 万片库、播放地址是直连 m3u8,爱优腾独播剧基本都有。
+        # 搜索走 wsyzy.cc 的 suggest(官方接口关了搜索),分类表在 worker 里重建。
+        "key": "s_wsyzy",
+        "name": "🈚无损云(12.8万)",
+        "type": 0,
+        "api": "https://cf.ddngo.space/wsy",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filter": 1,
+        "ms": 2150,          # /wsy list 实测
+    },
 ]
 
 
