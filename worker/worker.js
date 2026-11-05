@@ -482,22 +482,39 @@ async function handleWsy(url) {
 
   // ---- 搜索:官方接口不支持,拆成 suggest 拿 id + detail 拿详情 ----
   if (wd) {
-    const su = `${WSY_SITE}/index.php/ajax/suggest?mid=1&wd=` + encodeURIComponent(wd);
-    const r = await getText(su, `${WSY_SITE}/`, 9000);
+    // 站点的 suggest 时快时慢(实测 2~6 秒),同一个词条 10 分钟内复用结果
+    const cache = caches.default;
+    const ck = new Request(
+      `https://wsy-search.internal/s/` +
+      new URLSearchParams({ wd: wd }).toString());
+    const hit = await cache.match(ck);
+    if (hit) return hit;
+
+    const finish = async function (doc) {
+      const res = wsyJson(doc);
+      const copy = res.clone();
+      copy.headers.set("Cache-Control", "public, max-age=600");
+      await cache.put(ck, copy);
+      return res;
+    };
+
+    const su = `${WSY_SITE}/index.php/ajax/suggest?mid=1&wd=` +
+      encodeURIComponent(wd) + "&limit=60";
+    const r = await getText(su, `${WSY_SITE}/`, 12000);
     let items = [];
     if (r.status === 200) {
       try {
         const j = JSON.parse(r.text);
-        items = (j.list || [])
-          .filter(function (x) { return x && x.id && x.name; })
-          .slice(0, 20);
+        // 默认只给 20 条,正片常被"XX之XXX"这类短剧挤出前 20(实测搜"狂飙"
+        // 精确命中在第 30 位之后),所以要 limit=60 再自己排。
+        items = (j.list || []).filter(function (x) { return x && x.id && x.name; });
       } catch (e) {
         /* 忽略 */
       }
     }
     if (!items.length) {
-      return wsyJson({ code: 1, msg: "ok", page: 1, pagecount: 1,
-                       limit: 0, total: 0, list: [], class: WSY_CLASS });
+      return finish({ code: 1, msg: "ok", page: 1, pagecount: 1,
+                      limit: 0, total: 0, list: [], class: WSY_CLASS });
     }
     // suggest 是按站点索引顺序出的,精确命中的正片常排在第 4~6 位。
     // 按"完全相等 > 前缀 > 包含"重排,免得搜"庆余年"第一个结果是《庆余年之帝王业》这类短剧。
@@ -507,24 +524,55 @@ async function handleWsy(url) {
       if (n.indexOf(wd) >= 0) return 2;
       return 1;
     };
-    items.sort(function (a, b) { return score(b.name) - score(a.name); });
-    const d = await getText(
-      `${WSY}?ac=detail&ids=` + items.map(function (x) { return x.id; }).join(","),
-      null, 16000);
-    if (d.status === 200) {
+    items.sort(function (a, b) {
+      const d = score(b.name) - score(a.name);
+      // 同级里短的更接近原名:"庆余年第二季" 该排在 "庆余年之风起沧州" 前面
+      return d !== 0 ? d : a.name.length - b.name.length;
+    });
+    // 排序后精确/前缀命中一定在最前面,所以取 20 条既能保证正片在列,
+    // 又只发 1 次 detail(上游单次上限正好 20),搜索耗时从 4s 降到 2s
+    items = items.slice(0, 20);
+
+    // 上游两个坑:
+    //   1. detail 每次最多认 20 个 ids,传 60 个只回前 20 条 —— 必须分批拉
+    //   2. detail 不认传进去的 ids 顺序,是它自己的排序 —— 拿到后要自己重排
+    const order = {};
+    items.forEach(function (x, i) { order[String(x.id)] = i; });
+    const chunks = [];
+    for (let i = 0; i < items.length; i += 20) {
+      chunks.push(items.slice(i, i + 20).map(function (x) { return x.id; }));
+    }
+    const got = await Promise.all(chunks.map(function (c) {
+      return getText(`${WSY}?ac=detail&ids=` + c.join(","), null, 16000);
+    }));
+    const merged = [];
+    const seen = {};
+    for (const d of got) {
+      if (d.status !== 200) continue;
       try {
         const j = JSON.parse(d.text);
-        if (j && j.list) {
-          j.class = WSY_CLASS;
-          j.total = j.list.length;
-          return wsyJson(j);
-        }
+        (j.list || []).forEach(function (v) {
+          const k = String(v.vod_id);
+          if (seen[k]) return;
+          seen[k] = 1;
+          merged.push(v);
+        });
       } catch (e) {
-        /* 落到下面的空结果 */
+        /* 单批失败不影响其余 */
       }
     }
-    return wsyJson({ code: 1, msg: "ok", page: 1, pagecount: 1,
-                     limit: 0, total: 0, list: [], class: WSY_CLASS });
+    if (merged.length) {
+      merged.sort(function (a, b) {
+        const ia = order[String(a.vod_id)];
+        const ib = order[String(b.vod_id)];
+        return (ia === undefined ? 999 : ia) - (ib === undefined ? 999 : ib);
+      });
+      return finish({ code: 1, msg: "ok", page: 1, pagecount: 1,
+                      limit: merged.length, total: merged.length,
+                      list: merged, class: WSY_CLASS });
+    }
+    return finish({ code: 1, msg: "ok", page: 1, pagecount: 1,
+                    limit: 0, total: 0, list: [], class: WSY_CLASS });
   }
 
   // ---- 详情 / 分类列表:原样透传,只改写 class ----
