@@ -1,26 +1,8 @@
 {
  "sites": [
   {
-   "key": "s_b6d1253152",
-   "name": "🦊火狐采集 47ms",
-   "type": 1,
-   "api": "https://hhzyapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_4358685bfc",
-   "name": "🍀┃非凡┃资源 58ms",
-   "type": 0,
-   "api": "http://ffzy5.tv/api.php/provide/vod",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_86eb60a6ce",
-   "name": "🎀极速┃采集 61ms",
+   "name": "🎀极速┃采集 44ms",
    "type": 1,
    "api": "https://jszyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -28,44 +10,26 @@
    "filter": 1
   },
   {
-   "key": "s_4c917c2c4f",
-   "name": "🥗┃非凡┃资源 64ms",
+   "key": "s_b6d1253152",
+   "name": "🦊火狐采集 49ms",
    "type": 1,
-   "api": "http://ffzy1.tv/api.php/provide/vod/",
+   "api": "https://hhzyapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_ecc248efb9",
-   "name": "影视 • 非凡[直连] 67ms",
+   "key": "s_455f477a4e",
+   "name": "ikunzyapi.com 157ms",
    "type": 0,
-   "api": "http://ffzy.tv/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_816a878e1e",
-   "name": "🕹️淘片┃采集 179ms",
-   "type": 0,
-   "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_459dfdcfb4",
-   "name": "caiji.moduapi.cc 187ms",
-   "type": 0,
-   "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
+   "api": "https://ikunzyapi.com/api.php/provide/vod",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_3cd3fe9036",
-   "name": "api.guangsuapi.com 202ms",
+   "name": "api.guangsuapi.com 164ms",
    "type": 0,
    "api": "https://api.guangsuapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -74,7 +38,7 @@
   },
   {
    "key": "s_7773f447e2",
-   "name": "🐂红牛┃采集 224ms",
+   "name": "🐂红牛┃采集 233ms",
    "type": 0,
    "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
    "searchable": 1,
@@ -82,46 +46,10 @@
    "filter": 1
   },
   {
-   "key": "s_d8d52255b1",
-   "name": "🔰金鹰┃影视 270ms",
-   "type": 0,
-   "api": "https://jyzyapi.com/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_08291d2be0",
-   "name": "🦔暴風┃采集 273ms",
-   "type": 1,
-   "api": "https://bfzyapi.com/api.php/provide/vod",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_f93b6d4dd2",
-   "name": "影视 • 电影天堂 291ms",
-   "type": 0,
-   "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_6867e1f466",
-   "name": "🐮我的┃网盘🐮",
+   "key": "s_50f8c99658",
+   "name": "💓‍七味┃4K💓‍",
    "type": 3,
-   "api": "csp_MyPanGuard",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_db2cd23481",
-   "name": "💥韩剧┃秒播💥",
-   "type": 3,
-   "api": "csp_WexAiHanXiaoQuanGuard",
+   "api": "csp_AiQwMkvGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -136,19 +64,28 @@
    "filter": 1
   },
   {
-   "key": "s_81385a3711",
-   "name": "💓木偶┃4K💓",
+   "key": "s_49cc0123d8",
+   "name": "💥独播┃秒播💥",
    "type": 3,
-   "api": "csp_AiNewMuOuGuard",
+   "api": "csp_WexAiDuBoKuGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_3745e8952e",
-   "name": "💥贱片┃秒播💥",
+   "key": "s_f0291db637",
+   "name": "💥闪电┃秒播💥",
    "type": 3,
-   "api": "csp_WexAiJianPianGuard",
+   "api": "csp_WexAiYueYueGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_1fb72994f1",
+   "name": "💥文才┃秒播💥",
+   "type": 3,
+   "api": "csp_WexAiWenCaiGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -158,6 +95,15 @@
    "name": "💥小枫┃秒播💥",
    "type": 3,
    "api": "csp_WexFengYe4KGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_3745e8952e",
+   "name": "💥贱片┃秒播💥",
+   "type": 3,
+   "api": "csp_WexAiJianPianGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -181,6 +127,15 @@
    "filter": 1
   },
   {
+   "key": "s_74d38bda05",
+   "name": "💥伊影┃秒播💥",
+   "type": 3,
+   "api": "csp_WexAiYiYsGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_2865f4f87a",
    "name": "💥热播┃秒播💥",
    "type": 3,
@@ -190,10 +145,10 @@
    "filter": 1
   },
   {
-   "key": "s_74d38bda05",
-   "name": "💥伊影┃秒播💥",
+   "key": "s_876eb9dd12",
+   "name": "🎇伯伯┃秒播🎇",
    "type": 3,
-   "api": "csp_WexAiYiYsGuard",
+   "api": "csp_WexAiBoBoGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -208,10 +163,10 @@
    "filter": 1
   },
   {
-   "key": "s_876eb9dd12",
-   "name": "🎇伯伯┃秒播🎇",
+   "key": "s_64655ddf25",
+   "name": "🐯‍虎牙┃直播🐯‍",
    "type": 3,
-   "api": "csp_WexAiBoBoGuard",
+   "api": "csp_LiveAiHuYaGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -235,10 +190,10 @@
    "filter": 1
   },
   {
-   "key": "s_64655ddf25",
-   "name": "🐯‍虎牙┃直播🐯‍",
+   "key": "s_6146e13e96",
+   "name": "🍉漫短┃小红🍉",
    "type": 3,
-   "api": "csp_LiveAiHuYaGuard",
+   "api": "csp_ManJuAiHongGuoGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -262,28 +217,10 @@
    "filter": 1
   },
   {
-   "key": "s_6146e13e96",
-   "name": "🍉漫短┃小红🍉",
-   "type": 3,
-   "api": "csp_ManJuAiHongGuoGuard",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_8ec717daf9",
    "name": "🍉漫短┃小喜🍉",
    "type": 3,
    "api": "csp_ManJuAiXiFanGuard",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_9df1e63d58",
-   "name": "💓‍玩偶┃4K💓‍",
-   "type": 3,
-   "api": "csp_AiNewWoggGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -298,10 +235,28 @@
    "filter": 1
   },
   {
-   "key": "s_03d772ba40",
-   "name": "💓‍观影┃4K💓‍",
+   "key": "s_81385a3711",
+   "name": "💓木偶┃4K💓",
    "type": 3,
-   "api": "csp_AiNewGuanYingGuard",
+   "api": "csp_AiNewMuOuGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_e7af490ab8",
+   "name": "💓快影┃4K💓",
+   "type": 3,
+   "api": "csp_AiNewKuaiYingGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_a1a73b4ca9",
+   "name": "💓蜡笔┃4K💓",
+   "type": 3,
+   "api": "csp_AiNewLaBiGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -325,37 +280,28 @@
    "filter": 1
   },
   {
-   "key": "s_50f8c99658",
-   "name": "💓‍七味┃4K💓‍",
+   "key": "s_6867e1f466",
+   "name": "🐮我的┃网盘🐮",
    "type": 3,
-   "api": "csp_AiQwMkvGuard",
+   "api": "csp_MyPanGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_cc845e74e8",
-   "name": "🐮配置┃中心🐮",
+   "key": "s_9ce1117ce8",
+   "name": "💓多多┃4K💓",
    "type": 3,
-   "api": "csp_PanConfigGuard",
+   "api": "csp_AiNewDuoDuoGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_a1a73b4ca9",
-   "name": "💓蜡笔┃4K💓",
+   "key": "s_03d772ba40",
+   "name": "💓‍观影┃4K💓‍",
    "type": 3,
-   "api": "csp_AiNewLaBiGuard",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_e7af490ab8",
-   "name": "💓快影┃4K💓",
-   "type": 3,
-   "api": "csp_AiNewKuaiYingGuard",
+   "api": "csp_AiNewGuanYingGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -370,10 +316,10 @@
    "filter": 1
   },
   {
-   "key": "s_1f5b69f80a",
-   "name": "💓立播┃4K💓",
+   "key": "s_06618d4a00",
+   "name": "💓剧透┃4K💓",
    "type": 3,
-   "api": "csp_AiNewLibvioGuard",
+   "api": "csp_AiNewJuTouGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -388,19 +334,19 @@
    "filter": 1
   },
   {
-   "key": "s_06618d4a00",
-   "name": "💓剧透┃4K💓",
+   "key": "s_6924ad5d44",
+   "name": "💓‍原盘┃4K💓‍",
    "type": 3,
-   "api": "csp_AiNewJuTouGuard",
+   "api": "csp_AiNewZhiNan4KGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_9ce1117ce8",
-   "name": "💓多多┃4K💓",
+   "key": "s_1f5b69f80a",
+   "name": "💓立播┃4K💓",
    "type": 3,
-   "api": "csp_AiNewDuoDuoGuard",
+   "api": "csp_AiNewLibvioGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -766,10 +712,10 @@
    "filter": 1
   },
   {
-   "key": "s_6924ad5d44",
-   "name": "💓‍原盘┃4K💓‍",
+   "key": "s_2f9480f15f",
+   "name": "💓逸动┃4K💓",
    "type": 3,
-   "api": "csp_AiNewZhiNan4KGuard",
+   "api": "csp_AiNewYiDong4KGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -784,10 +730,19 @@
    "filter": 1
   },
   {
-   "key": "s_2f9480f15f",
-   "name": "💓逸动┃4K💓",
+   "key": "s_9df1e63d58",
+   "name": "💓‍玩偶┃4K💓‍",
    "type": 3,
-   "api": "csp_AiNewYiDong4KGuard",
+   "api": "csp_AiNewWoggGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_cc845e74e8",
+   "name": "🐮配置┃中心🐮",
+   "type": 3,
+   "api": "csp_PanConfigGuard",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -802,17 +757,35 @@
    "filter": 1
   },
   {
-   "key": "s_5e623fde55",
-   "name": "影视 • 建安 321ms",
+   "key": "s_db2cd23481",
+   "name": "💥韩剧┃秒播💥",
+   "type": 3,
+   "api": "csp_WexAiHanXiaoQuanGuard",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_f93b6d4dd2",
+   "name": "影视 • 电影天堂 342ms",
    "type": 0,
-   "api": "http://154.219.117.232:9981/jacloudapi.php/provide/vod",
+   "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_d8d52255b1",
+   "name": "🔰金鹰┃影视 357ms",
+   "type": 0,
+   "api": "https://jyzyapi.com/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_2e5b1dffbd",
-   "name": "🐯虎牙采集 326ms",
+   "name": "🐯虎牙采集 364ms",
    "type": 0,
    "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
    "searchable": 1,
@@ -820,17 +793,8 @@
    "filter": 1
   },
   {
-   "key": "s_0e4430721d",
-   "name": "🍎高清┃2K 365ms",
-   "type": 1,
-   "api": "https://api.1080zyku.com/inc/apijson.php",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_8170f84882",
-   "name": "🥑┃量子┃资源 420ms",
+   "name": "🥑┃量子┃资源 410ms",
    "type": 0,
    "api": "https://lzizy1.com/api.php/provide/vod/",
    "searchable": 1,
@@ -838,8 +802,53 @@
    "filter": 1
   },
   {
+   "key": "s_459dfdcfb4",
+   "name": "caiji.moduapi.cc 411ms",
+   "type": 0,
+   "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_5e623fde55",
+   "name": "影视 • 建安 438ms",
+   "type": 0,
+   "api": "http://154.219.117.232:9981/jacloudapi.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_0e4430721d",
+   "name": "🍎高清┃2K 479ms",
+   "type": 1,
+   "api": "https://api.1080zyku.com/inc/apijson.php",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_816a878e1e",
+   "name": "🕹️淘片┃采集 501ms",
+   "type": 0,
+   "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_08291d2be0",
+   "name": "🦔暴風┃采集 607ms",
+   "type": 1,
+   "api": "https://bfzyapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_112d3b0aee",
-   "name": "🌪️暴风影音 481ms",
+   "name": "🌪️暴风影音 622ms",
    "type": 0,
    "api": "https://app.bfzyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -847,35 +856,17 @@
    "filter": 1
   },
   {
-   "key": "s_b9f3aa6a8d",
-   "name": "🦚量子┃采集 521ms",
+   "key": "s_4358685bfc",
+   "name": "🍀┃非凡┃资源 632ms",
    "type": 0,
-   "api": "https://cj.lziapi.com/api.php/provide/vod/at/xml/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_455f477a4e",
-   "name": "ikunzyapi.com 559ms",
-   "type": 0,
-   "api": "https://ikunzyapi.com/api.php/provide/vod",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_3578ec3aba",
-   "name": "🔃量子┃资源 598ms",
-   "type": 0,
-   "api": "http://cj.lziapi.com/api.php/provide/vod/",
+   "api": "http://ffzy5.tv/api.php/provide/vod",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_967aedbab0",
-   "name": "🥣爱坤┃影视 901ms",
+   "name": "🥣爱坤┃影视 660ms",
    "type": 1,
    "api": "https://ikunzyapi.com/api.php/provide/vod/from/ikm3u8/at/json",
    "searchable": 1,
@@ -883,28 +874,55 @@
    "filter": 1
   },
   {
-   "key": "s_e1fb7e3f23",
-   "name": "🦚360┃采集 979ms",
+   "key": "s_87f98fec5d",
+   "name": "🆕非凡┃资源 681ms",
    "type": 1,
-   "api": "https://360zy.com/api.php/provide/vod?",
+   "api": "http://cj.ffzyapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_e48ca0359d",
-   "name": "zuida.xyz 1160ms",
+   "key": "s_b9f3aa6a8d",
+   "name": "🦚量子┃采集 876ms",
    "type": 0,
-   "api": "https://zuida.xyz/api.php/provide/vod/",
+   "api": "https://cj.lziapi.com/api.php/provide/vod/at/xml/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_3578ec3aba",
+   "name": "cj.lziapi.com 912ms",
+   "type": 0,
+   "api": "https://cj.lziapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
    "key": "s_b315a17a61",
-   "name": "🍭非凡┃采集 3800ms",
+   "name": "🍭非凡┃采集 1096ms",
    "type": 0,
    "api": "http://cj.ffzyapi.com/api.php/provide/vod/at/xml/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_e1fb7e3f23",
+   "name": "🍚玛丽┃秒播 1386ms",
+   "type": 0,
+   "api": "https://360zy.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_e48ca0359d",
+   "name": "zuida.xyz 1456ms",
+   "type": 0,
+   "api": "https://zuida.xyz/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -914,6 +932,15 @@
    "name": "🎏百度┃采集",
    "type": 0,
    "api": "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_ecc248efb9",
+   "name": "影视 • 非凡[直连]",
+   "type": 0,
+   "api": "http://ffzy.tv/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
