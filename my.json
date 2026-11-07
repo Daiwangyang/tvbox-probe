@@ -29,7 +29,7 @@
   },
   {
    "key": "s_f93b6d4dd2",
-   "name": "🎬电影天堂(8.5万)·334ms",
+   "name": "🎬电影天堂(8.5万)·311ms",
    "type": 0,
    "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -38,7 +38,7 @@
   },
   {
    "key": "s_e1e4e73af0",
-   "name": "🦚360(7.5万)·376ms",
+   "name": "🦚360(7.5万)·345ms",
    "type": 0,
    "api": "https://360zy.com/api.php/provide/vod/",
    "searchable": 1,
@@ -46,17 +46,8 @@
    "filter": 1
   },
   {
-   "key": "s_d8d52255b1",
-   "name": "🔰金鹰(12万)·620ms",
-   "type": 0,
-   "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_b6d1253152",
-   "name": "🦊火狐(12万)·641ms",
+   "name": "🦊火狐(12万)·573ms",
    "type": 0,
    "api": "https://hhzyapi.com/api.php/provide/vod/",
    "searchable": 1,
@@ -73,10 +64,10 @@
    "filter": 1
   },
   {
-   "key": "s_42d31afe54",
-   "name": "📺爱奇艺(7万)·706ms",
+   "key": "s_1dc3ecbe6d",
+   "name": "🐳巨量(35万)·752ms",
    "type": 0,
-   "api": "https://iqiyizyapi.com/api.php/provide/vod/",
+   "api": "https://api.juliang.live/api/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -91,10 +82,10 @@
    "filter": 1
   },
   {
-   "key": "s_1dc3ecbe6d",
-   "name": "🐳巨量(35万)·753ms",
+   "key": "s_3b3caedfe6",
+   "name": "🐰玉兔(22万)·780ms",
    "type": 0,
-   "api": "https://api.juliang.live/api/provide/vod/",
+   "api": "https://apiyutu.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -109,35 +100,8 @@
    "filter": 1
   },
   {
-   "key": "s_c3389de107",
-   "name": "🎏百度云(5万)·840ms",
-   "type": 0,
-   "api": "https://api.apibdzy.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_3cd3fe9036",
-   "name": "💨光速(12万)·894ms",
-   "type": 0,
-   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_3b3caedfe6",
-   "name": "🐰玉兔(22万)·905ms",
-   "type": 0,
-   "api": "https://apiyutu.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_963f8aa503",
-   "name": "📰新浪(12万)·951ms",
+   "name": "📰新浪(12万)·859ms",
    "type": 0,
    "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
    "searchable": 1,
@@ -145,8 +109,17 @@
    "filter": 1
   },
   {
+   "key": "s_42d31afe54",
+   "name": "📺爱奇艺(7万)·876ms",
+   "type": 0,
+   "api": "https://iqiyizyapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_2a8df3afcf",
-   "name": "🍃飘零(10万)·996ms",
+   "name": "🍃飘零(10万)·896ms",
    "type": 0,
    "api": "https://p2100.net/api.php/provide/vod/",
    "searchable": 1,
@@ -155,9 +128,27 @@
   },
   {
    "key": "s_459dfdcfb4",
-   "name": "🏙魔都(9.1万)·1083ms",
+   "name": "🏙魔都(9.1万)·928ms",
    "type": 0,
    "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_c3389de107",
+   "name": "🎏百度云(5万)·928ms",
+   "type": 0,
+   "api": "https://api.apibdzy.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_3cd3fe9036",
+   "name": "💨光速(12万)·1184ms",
+   "type": 0,
+   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -167,6 +158,15 @@
    "name": "🚄速播(12万)·1376ms",
    "type": 0,
    "api": "https://subocaiji.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_d8d52255b1",
+   "name": "🔰金鹰(12万)·1615ms",
+   "type": 0,
+   "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -940,6 +940,11 @@
    "name": "🌍国际体育频道(IPTV·464台)",
    "type": 0,
    "url": "https://iptv-org.github.io/iptv/categories/sports.m3u"
+  },
+  {
+   "name": "🫘抖音直播(实时热门)",
+   "type": 0,
+   "url": "https://cf.ddngo.space/dylive.m3u"
   }
  ],
  "spider": "http://oss4liview.moji.com/thd_file/2026/10/31/272e922132480799981a031067b6d722.jpg"

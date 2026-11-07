@@ -599,6 +599,159 @@ async function handleWsy(url) {
   }
 }
 
+// ===================== 抖音直播 =====================
+// 思路:live.douyin.com 的分类页 SSR HTML 里就写着在播房间的 web_rid,
+// 拿 web_rid 调 webcast/room/web/enter 能拿到 stream_url 里的 HLS 地址,
+// 这些 CDN 地址本身不需要 referer/cookie,任何播放器都能直接拉。
+// 坑:enter 接口不带 cookie 会返回非 JSON(拿不到房间),必须先访问首页取 ttwid。
+const DY_HOST = "https://live.douyin.com";
+const DY_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+  "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
+const DY_BASE = {
+  aid: "6383", app_name: "douyin_web", live_id: "1",
+  device_platform: "web", language: "zh-CN", enter_from: "web_live",
+  cookie_enabled: "true", screen_width: "1920", screen_height: "1080",
+  browser_language: "zh-CN", browser_platform: "Win32",
+  browser_name: "Chrome", browser_version: "126.0.0.0",
+};
+// 1 热门 2 游戏 3 娱乐 4 才艺 5 生活 (编号不对只是少抓,不会报错)
+const DY_CATS = ["1", "2", "3"];
+
+let dyCk = { val: "", exp: 0 };
+
+async function dyCookie() {
+  const now = Date.now();
+  if (dyCk.val && now < dyCk.exp) return dyCk.val;
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 12000);
+  try {
+    const r = await fetch(DY_HOST + "/", {
+      headers: { "User-Agent": DY_UA, Accept: "text/html,application/xhtml+xml" },
+      signal: ctl.signal,
+    });
+    await r.text();  // 必须把 body 读掉,cookie 才算真发下来
+    const list = typeof r.headers.getSetCookie === "function"
+      ? r.headers.getSetCookie()
+      : [r.headers.get("set-cookie") || ""];
+    const parts = [];
+    for (const c of list) {
+      const m = String(c || "").match(/(ttwid|UIFID_TEMP|msToken)=([^;,\s]+)/);
+      if (m) parts.push(m[1] + "=" + m[2]);
+    }
+    dyCk = { val: parts.join("; "), exp: now + 25 * 60 * 1000 };
+  } catch (e) {
+    /* 拿不到就空 cookie 硬试 */
+  } finally {
+    clearTimeout(timer);
+  }
+  return dyCk.val;
+}
+
+async function dyFetch(url, cookie, accept, timeoutMs) {
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), timeoutMs || 10000);
+  try {
+    const h = { "User-Agent": DY_UA, Referer: DY_HOST + "/", Accept: accept };
+    if (cookie) h.Cookie = cookie;
+    const r = await fetch(url, { headers: h, signal: ctl.signal, redirect: "follow" });
+    return { status: r.status, text: r.status === 200 ? await r.text() : "" };
+  } catch (e) {
+    return { status: 0, text: "" };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/** 分类页里挖在播房间的 web_rid。 */
+async function dyRids(cookie) {
+  const pages = await Promise.all(DY_CATS.map(function (c) {
+    return dyFetch(`${DY_HOST}/category/${c}`, cookie, "text/html", 12000);
+  }));
+  const out = [];
+  const seen = {};
+  for (const p of pages) {
+    if (p.status !== 200) continue;
+    const re = /web_rid\\?"\s*:\s*\\?"(\d{5,})/g;
+    let m;
+    while ((m = re.exec(p.text)) !== null) {
+      const rid = m[1];
+      if (seen[rid]) continue;
+      seen[rid] = 1;
+      out.push(rid);
+    }
+  }
+  return out;
+}
+
+/** 单个房间:只要还在播(status=2)且有 HLS 就返回一条直播。 */
+async function dyRoom(rid, cookie) {
+  const q = new URLSearchParams(DY_BASE);
+  q.set("web_rid", rid);
+  const r = await dyFetch(`${DY_HOST}/webcast/room/web/enter/?` + q.toString(),
+                          cookie, "application/json", 9000);
+  if (r.status !== 200) return null;
+  let j;
+  try { j = JSON.parse(r.text); } catch (e) { return null; }
+  const room = (((j.data || {}).data) || [])[0];
+  if (!room || room.status !== 2) return null;
+  const map = (room.stream_url || {}).hls_pull_url_map || {};
+  const pick = map.FULL_HD1 || map.HD1 || map.SD1 || map.SD2 ||
+    (Object.keys(map).length ? map[Object.keys(map)[0]] : "");
+  if (!pick) return null;
+  return {
+    nick: ((room.owner || {}).nickname || "") || ("房间" + rid),
+    title: String(room.title || ""),
+    url: String(pick),
+  };
+}
+
+async function handleDyLive(url) {
+  const cache = caches.default;
+  const manual = (url.searchParams.get("rids") || "").trim();
+  const ck = new Request("https://dy-live.internal/m3u/" + (manual || "hot"));
+  const hit = await cache.match(ck);
+
+  const cookie = await dyCookie();
+  let rids = manual
+    ? manual.split(",").map(function (s) { return s.trim(); }).filter(Boolean)
+    : await dyRids(cookie);
+
+  if (!rids.length) {
+    // 一个都没抓到,宁可回上次的缓存,也别给播放器一个空列表
+    if (hit) return hit;
+    return new Response("#EXTM3U\n", {
+      status: 200,
+      headers: { "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8" },
+    });
+  }
+  rids = rids.slice(0, 30);
+
+  const rooms = (await Promise.all(rids.map(function (rid) {
+    return dyRoom(rid, cookie);
+  }))).filter(Boolean);
+
+  const lines = ["#EXTM3U"];
+  for (const r of rooms) {
+    const name = r.title ? `${r.nick} · ${r.title}` : r.nick;
+    lines.push(`#EXTINF:-1 tvg-name="${r.nick}" group-title="抖音直播",${name}`);
+    lines.push(r.url);
+  }
+
+  const res = new Response(lines.join("\n") + "\n", {
+    status: 200,
+    headers: Object.assign({}, CORS, {
+      "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
+      // 地址里带 CDN 过期参数,不能长缓存;3 分钟够用且不至于每次都重抓
+      "Cache-Control": "public, max-age=180",
+    }),
+  });
+  const copy = res.clone();
+  copy.headers.set("Cache-Control", "public, max-age=180");
+  await cache.put(ck, copy);
+  return res;
+}
+
 // ===================== 主入口 =====================
 
 export default {
@@ -616,6 +769,9 @@ export default {
 
     // 无损云适配层,同样免 sig(api 地址要写进公开的 my.json)
     if (path === "/wsy") return handleWsy(url);
+
+    // 抖音直播:每次现抓现生成 m3u,地址写进 lives
+    if (path === "/dylive" || path === "/dylive.m3u") return handleDyLive(url);
 
     if (path === "/77") {
       const doc = await handleCms(url);

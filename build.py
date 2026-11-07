@@ -90,6 +90,26 @@ FIXED = [
 ]
 
 
+# 直播源里由本项目自己维护的条目:build.py 每次跑都补回去,
+# 免得上一份配置里没有、就被"继承"逻辑悄悄弄丢
+LIVES_EXTRA = [
+    {
+        "name": "🫘抖音直播(实时热门)",
+        "type": 0,
+        "url": "https://cf.ddngo.space/dylive.m3u",
+    },
+]
+
+
+def build_lives(prev: list) -> list:
+    out = [x for x in prev if isinstance(x, dict)]
+    names = {x.get("name") for x in out}
+    for x in LIVES_EXTRA:
+        if x["name"] not in names:
+            out.append(dict(x))
+    return out
+
+
 def host(api: str) -> str:
     return (urlsplit(api).hostname or "").lower()
 
@@ -225,7 +245,7 @@ def main() -> None:
         "sites": merged + csp,
         "parses": prev.get("parses", []),
         "flags": prev.get("flags", []),
-        "lives": prev.get("lives", []),
+        "lives": build_lives(prev.get("lives", [])),
     }
     if prev.get("spider"):
         doc["spider"] = prev["spider"]
