@@ -725,7 +725,7 @@ async function handleDyLive(url) {
       headers: { "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8" },
     });
   }
-  rids = rids.slice(0, 30);
+  rids = rids.slice(0, 26);
 
   const rooms = (await Promise.all(rids.map(function (rid) {
     return dyRoom(rid, cookie);

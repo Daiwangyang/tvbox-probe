@@ -10,15 +10,6 @@
    "filter": 1
   },
   {
-   "key": "s_b9f3aa6a8d",
-   "name": "🥑量子(16万)·255ms",
-   "type": 0,
-   "api": "https://cj.lziapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_36df07a7f4",
    "name": "🍀非凡(9.9万)·307ms",
    "type": 0,
@@ -32,6 +23,15 @@
    "name": "🎬电影天堂(8.5万)·311ms",
    "type": 0,
    "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_b9f3aa6a8d",
+   "name": "🥑量子(16万)·340ms",
+   "type": 0,
+   "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -55,6 +55,15 @@
    "filter": 1
   },
   {
+   "key": "s_21e9cfadc2",
+   "name": "🐂红牛(12万)·606ms",
+   "type": 0,
+   "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_2e5b1dffbd",
    "name": "🐯虎牙(12万)·684ms",
    "type": 0,
@@ -68,15 +77,6 @@
    "name": "🐳巨量(35万)·752ms",
    "type": 0,
    "api": "https://api.juliang.live/api/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_c7c02a0452",
-   "name": "🐂红牛(12万)·752ms",
-   "type": 0,
-   "api": "https://hongniuzy2.com/api.php/provide/vod/from/hnm3u8/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -145,6 +145,15 @@
    "filter": 1
   },
   {
+   "key": "s_1b411b52e2",
+   "name": "🌊无尽(12万)·1075ms",
+   "type": 0,
+   "api": "https://api.wujinapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_3cd3fe9036",
    "name": "💨光速(12万)·1184ms",
    "type": 0,
@@ -194,15 +203,6 @@
    "name": "🔥弹幕仓·4067ms",
    "type": 0,
    "api": "https://cf.ddngo.space/77",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_1b411b52e2",
-   "name": "🌊无尽(12万)·1075ms~",
-   "type": 0,
-   "api": "https://api.wujinapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
