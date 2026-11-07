@@ -1,6 +1,6 @@
-# 探测结果 2026-11-06 23:30
+# 探测结果 2026-11-07 03:18
 
-- 待测 327 / 达标 303 / 成品 106（含降级保留）
+- 待测 327 / 达标 303 / 成品 105（含降级保留）
 
 - 阈值 1500ms,连续 2 轮不通才淘汰
 
@@ -8,12 +8,11 @@
 
 | 延迟 | 站点 | 接口 |
 | --- | --- | --- |
-| 44ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
-| 49ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
-| 157ms | ikunzyapi.com | `https://ikunzyapi.com/api.php/provide/vod` |
-| 164ms | api.guangsuapi.com | `https://api.guangsuapi.com/api.php/provide/vod/` |
-| 196ms | 影视 • 极速[直连] | `https://jszyapi.com/api.php/provide/vod/?ac=list` |
-| 233ms | 🐂红牛┃采集 | `https://www.hongniuzy2.com/api.php/provide/vod/` |
+| 49ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
+| 59ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
+| 174ms | 🥗┃非凡┃资源 | `http://ffzy1.tv/api.php/provide/vod/` |
+| 180ms | 影视 • 极速[直连] | `https://jszyapi.com/api.php/provide/vod/?ac=list` |
+| 224ms | caiji.moduapi.cc | `https://caiji.moduapi.cc/api.php/provide/vod/?ac=list` |
 | 300ms | 360 | `csp_SP360` |
 | 300ms | 泥巴(墙) | `csp_Nbys` |
 | 300ms | Alist(SP) | `csp_Alist` |
@@ -68,37 +67,38 @@
 | 300ms | 🎙️易听┃音乐 | `csp_MusicGuard` |
 | 300ms | 💡聚剧┃四盘 | `csp_SeedhubGuard` |
 | 300ms | 🌞光影┃不卡 | `csp_T4Guard` |
+| 300ms | 📔厂长┃不卡 | `csp_NewCzGuard` |
 
 ## 弱可用 / 广告解析
 
-- 57ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
-- 78ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
+- 72ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
 - 109ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
-- 153ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
-- 259ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
-- 265ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
-- 276ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
-- 704ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
-- 720ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
-- 1673ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
+- 209ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
+- 225ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
+- 251ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
+- 254ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
+- 269ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
+- 718ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
+- 1005ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
+- 1853ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
 
 ## 不通
 
 - 🎏百度┃采集 `https://api.apibdzy.com/api.php/provide/vod/?ac=list` — HTTPError
-- 影视 • 非凡[直连] `http://ffzy.tv/api.php/provide/vod/` — HTTPError
+- 💥贱片┃秒播💥 `csp_WexAiJianPianGuard` — jar 无此类
+- 💥下饭┃秒播💥 `csp_WexAiJuXiaFanGuard` — jar 无此类
+- 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
 - 👒┃小胡┃资源┃ `http://c.小胡.icu/api.php/provide/vod/` — URLError
 - 🦁┃四九┃资源 `https://49zy1.com/api.php/provide/vod/?ac=list` — URLError
-- 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
 - 🐯┃奇虎┃采集 `https://caiji.qhzyapi.com/api.php/provide/vod/` — URLError
 - ⛱┃可可┃采集 `https://kekezy1.com/api.php/provide/vod/?ac=list` — URLError
 - xh1.xn--yetu07f.icu `http://xh1.xn--yetu07f.icu/api.php/provide/vod/` — URLError
 - xzcjz.com `https://xzcjz.com/api.php/provide/vod` — URLError
 - vip.mosangkeji.com:443 `https://vip.mosangkeji.com:443/api/?key=q7mSY5L8ssbm1J3Eai&url=` — URLError
-- 🥗┃非凡┃资源 `http://ffzy1.tv/api.php/provide/vod/` — HTTPError
+- 🎶明星┃MV `https://mv.wogg.link/mv/vod` — HTTPError
 - xiutan.shiyifacai.com `http://xiutan.shiyifacai.com/zuoan/api.php/app/` — URLError
 - 119.91.123.253:2345 `http://119.91.123.253:2345/Api/yun.php?url=` — URLError
-- 🎶明星┃MV `https://mv.wogg.link/mv/vod` — URLError
 
 ## 引流源(跳小程序 / 关注公众号,已剔除)
 
-- 跳小程序: `https://xiaomark.com/`
+- 扫码: `https://xiaomark.com/`
