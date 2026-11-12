@@ -2,490 +2,490 @@
  "http://154.219.117.232:9981/jacloudapi.php/provide/vod/": {
   "api": "http://154.219.117.232:9981/jacloudapi.php/provide/vod/",
   "ms": 144,
-  "raw": 144,
+  "raw": 129,
   "hist": [
-   142,
    159,
-   144
+   144,
+   129
   ],
   "total": 65229,
-  "detail_ms": 219,
+  "detail_ms": 240,
   "search_hits": 65229,
   "fail": 0
  },
  "https://api.maoyanapi.top/api.php/provide/vod/": {
   "api": "https://api.maoyanapi.top/api.php/provide/vod/",
-  "ms": 216,
-  "raw": 327,
+  "ms": 319,
+  "raw": 319,
   "hist": [
-   216,
    182,
-   327
+   327,
+   319
   ],
   "total": 34484,
-  "detail_ms": 244,
+  "detail_ms": 198,
   "search_hits": 1,
   "fail": 0
  },
  "http://caiji.dyttzyapi.com/api.php/provide/vod/": {
   "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/",
-  "ms": 531,
-  "raw": 1472,
+  "ms": 354,
+  "raw": 335,
   "hist": [
-   531,
    354,
-   1472
+   1472,
+   335
   ],
-  "total": 85094,
-  "detail_ms": 1204,
+  "total": 85098,
+  "detail_ms": 1047,
   "search_hits": 7,
   "fail": 0
  },
  "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/": {
   "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/",
-  "ms": 284,
-  "raw": 306,
+  "ms": 306,
+  "raw": 543,
   "hist": [
-   284,
    251,
-   306
+   306,
+   543
   ],
-  "total": 163547,
-  "detail_ms": 516,
+  "total": 163561,
+  "detail_ms": 891,
   "search_hits": 1679,
   "fail": 0
  },
  "https://cj.lziapi.com/api.php/provide/vod/": {
   "api": "https://cj.lziapi.com/api.php/provide/vod/",
-  "ms": 320,
-  "raw": 320,
+  "ms": 567,
+  "raw": 1548,
   "hist": [
-   276,
    567,
-   320
+   320,
+   1548
   ],
-  "total": 163557,
-  "detail_ms": 278,
+  "total": 163570,
+  "detail_ms": 1649,
   "search_hits": 1679,
   "fail": 0
  },
  "http://ffzy5.tv/api.php/provide/vod/": {
   "api": "http://ffzy5.tv/api.php/provide/vod/",
-  "ms": 317,
-  "raw": 307,
+  "ms": 314,
+  "raw": 314,
   "hist": [
-   329,
    317,
-   307
+   307,
+   314
   ],
-  "total": 99088,
-  "detail_ms": 316,
+  "total": 99091,
+  "detail_ms": 652,
   "search_hits": 8,
   "fail": 0
  },
  "http://jyzyapi.com/provide/vod/from/jinyingm3u8/": {
   "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
   "ms": 686,
-  "raw": 686,
+  "raw": 441,
   "hist": [
-   342,
    1466,
-   686
+   686,
+   441
   ],
-  "total": 118121,
-  "detail_ms": 661,
+  "total": 118139,
+  "detail_ms": 769,
   "search_hits": 8,
   "fail": 0
  },
  "https://api.ffzyapi.com/api.php/provide/vod/": {
   "api": "https://api.ffzyapi.com/api.php/provide/vod/",
   "ms": 526,
-  "raw": 489,
+  "raw": 3059,
   "hist": [
-   529,
    526,
-   489
+   489,
+   3059
   ],
-  "total": 99088,
-  "detail_ms": 546,
+  "total": 99091,
+  "detail_ms": 1754,
   "search_hits": 8,
   "fail": 0
  },
  "https://360zyzz.com/api.php/provide/vod/": {
   "api": "https://360zyzz.com/api.php/provide/vod/",
-  "ms": 857,
-  "raw": 804,
+  "ms": 888,
+  "raw": 888,
   "hist": [
-   857,
    1587,
-   804
+   804,
+   888
   ],
-  "total": 74868,
-  "detail_ms": 538,
+  "total": 74874,
+  "detail_ms": 1813,
   "search_hits": 3,
   "fail": 0
  },
  "https://hhzyapi.com/api.php/provide/vod/": {
   "api": "https://hhzyapi.com/api.php/provide/vod/",
   "ms": 874,
-  "raw": 666,
+  "raw": 1071,
   "hist": [
-   922,
    874,
-   666
+   666,
+   1071
   ],
-  "total": 117228,
-  "detail_ms": 1090,
+  "total": 117246,
+  "detail_ms": 2166,
   "search_hits": 8,
   "fail": 0
  },
  "https://360zy.com/api.php/provide/vod/": {
   "api": "https://360zy.com/api.php/provide/vod/",
-  "ms": 752,
-  "raw": 862,
+  "ms": 862,
+  "raw": 1740,
   "hist": [
-   704,
    752,
-   862
+   862,
+   1740
   ],
-  "total": 74936,
-  "detail_ms": 905,
+  "total": 74939,
+  "detail_ms": 1832,
   "search_hits": 3,
   "fail": 0
  },
  "https://jyzyapi.com/provide/vod/from/jinyingyun/at/json/": {
   "api": "https://jyzyapi.com/provide/vod/from/jinyingyun/at/json/",
   "ms": 1014,
-  "raw": 1873,
+  "raw": 751,
   "hist": [
-   729,
    1014,
-   1873
+   1873,
+   751
   ],
-  "total": 118121,
-  "detail_ms": 1841,
+  "total": 118139,
+  "detail_ms": 1878,
   "search_hits": 8,
   "fail": 0
  },
  "https://jszyapi.com/api.php/provide/vod/": {
   "api": "https://jszyapi.com/api.php/provide/vod/",
   "ms": 829,
-  "raw": 829,
+  "raw": 774,
   "hist": [
-   709,
    1036,
-   829
+   829,
+   774
   ],
-  "total": 116469,
-  "detail_ms": 902,
+  "total": 116487,
+  "detail_ms": 894,
   "search_hits": 8,
   "fail": 0
  },
  "https://api.juliang.live/api/provide/vod/": {
   "api": "https://api.juliang.live/api/provide/vod/",
-  "ms": 737,
-  "raw": 756,
+  "ms": 756,
+  "raw": 803,
   "hist": [
-   735,
    737,
-   756
+   756,
+   803
   ],
-  "total": 352351,
-  "detail_ms": 726,
+  "total": 352368,
+  "detail_ms": 696,
   "search_hits": 11,
   "fail": 0
  },
  "https://api.zuidapi.com/api.php/provide/vod/": {
   "api": "https://api.zuidapi.com/api.php/provide/vod/",
-  "ms": 1270,
-  "raw": 959,
+  "ms": 959,
+  "raw": 771,
   "hist": [
-   1270,
    1448,
-   959
+   959,
+   771
   ],
-  "total": 125836,
-  "detail_ms": 1168,
+  "total": 125845,
+  "detail_ms": 1848,
   "search_hits": 7,
   "fail": 0
  },
  "https://www.hongniuzy2.com/api.php/provide/vod/": {
   "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
-  "ms": 687,
-  "raw": 510,
+  "ms": 713,
+  "raw": 831,
   "hist": [
-   687,
    713,
-   510
+   510,
+   831
   ],
-  "total": 117543,
-  "detail_ms": 1067,
+  "total": 117561,
+  "detail_ms": 1312,
   "search_hits": 8,
   "fail": 0
  },
  "https://api.ukuapi88.com/api.php/provide/vod/": {
   "api": "https://api.ukuapi88.com/api.php/provide/vod/",
   "ms": 867,
-  "raw": 867,
+  "raw": 680,
   "hist": [
-   649,
    871,
-   867
+   867,
+   680
   ],
-  "total": 60509,
-  "detail_ms": 1122,
+  "total": 60512,
+  "detail_ms": 2103,
   "search_hits": 3,
   "fail": 0
  },
  "https://p2100.net/api.php/provide/vod/": {
   "api": "https://p2100.net/api.php/provide/vod/",
   "ms": 785,
-  "raw": 785,
+  "raw": 1876,
   "hist": [
-   1054,
    673,
-   785
+   785,
+   1876
   ],
-  "total": 101381,
-  "detail_ms": 1220,
+  "total": 101389,
+  "detail_ms": 775,
   "search_hits": 8,
   "fail": 0
  },
  "https://caiji.dyttzyapi.com/api.php/provide/vod/": {
   "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/",
-  "ms": 544,
-  "raw": 1312,
+  "ms": 1312,
+  "raw": 5886,
   "hist": [
-   474,
    544,
-   1312
+   1312,
+   5886
   ],
-  "total": 85094,
-  "detail_ms": 909,
+  "total": 85098,
+  "detail_ms": 828,
   "search_hits": 7,
   "fail": 0
  },
  "https://api.ddapi.cc/api.php/provide/vod/": {
   "api": "https://api.ddapi.cc/api.php/provide/vod/",
-  "ms": 910,
-  "raw": 1046,
+  "ms": 1046,
+  "raw": 1256,
   "hist": [
-   664,
    910,
-   1046
+   1046,
+   1256
   ],
-  "total": 46817,
-  "detail_ms": 1335,
+  "total": 46826,
+  "detail_ms": 1629,
   "search_hits": 1,
   "fail": 0
  },
  "https://iqiyizyapi.com/api.php/provide/vod/": {
   "api": "https://iqiyizyapi.com/api.php/provide/vod/",
-  "ms": 1021,
-  "raw": 1285,
+  "ms": 1285,
+  "raw": 1519,
   "hist": [
-   897,
    1021,
-   1285
+   1285,
+   1519
   ],
-  "total": 70736,
-  "detail_ms": 1461,
+  "total": 70739,
+  "detail_ms": 1318,
   "search_hits": 2,
   "fail": 0
  },
  "https://api.guangsuapi.com/api.php/provide/vod/": {
   "api": "https://api.guangsuapi.com/api.php/provide/vod/",
-  "ms": 1067,
-  "raw": 606,
+  "ms": 783,
+  "raw": 783,
   "hist": [
-   1067,
    1457,
-   606
+   606,
+   783
   ],
-  "total": 118135,
-  "detail_ms": 753,
+  "total": 118153,
+  "detail_ms": 1104,
   "search_hits": 8,
   "fail": 0
  },
  "https://www.mdzyapi.com/api.php/provide/vod/": {
   "api": "https://www.mdzyapi.com/api.php/provide/vod/",
-  "ms": 1214,
-  "raw": 1059,
+  "ms": 1059,
+  "raw": 988,
   "hist": [
-   1214,
    1306,
-   1059
+   1059,
+   988
   ],
-  "total": 91705,
-  "detail_ms": 752,
+  "total": 91707,
+  "detail_ms": 813,
   "search_hits": 3,
   "fail": 0
  },
  "https://caiji.moduapi.cc/api.php/provide/vod/": {
   "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
-  "ms": 1031,
-  "raw": 1157,
+  "ms": 1134,
+  "raw": 1134,
   "hist": [
-   1031,
    838,
-   1157
+   1157,
+   1134
   ],
-  "total": 91705,
-  "detail_ms": 1564,
+  "total": 91707,
+  "detail_ms": 2636,
   "search_hits": 3,
   "fail": 0
  },
  "https://apiyutu.com/api.php/provide/vod/": {
   "api": "https://apiyutu.com/api.php/provide/vod/",
-  "ms": 785,
-  "raw": 785,
+  "ms": 1056,
+  "raw": 1056,
   "hist": [
-   769,
    1370,
-   785
+   785,
+   1056
   ],
   "total": 225909,
-  "detail_ms": 1325,
+  "detail_ms": 4724,
   "search_hits": 4,
   "fail": 0
  },
  "https://www.huyaapi.com/api.php/provide/vod/at/json/": {
   "api": "https://www.huyaapi.com/api.php/provide/vod/at/json/",
   "ms": 674,
-  "raw": 527,
+  "raw": 902,
   "hist": [
-   904,
    674,
-   527
+   527,
+   902
   ],
-  "total": 117058,
-  "detail_ms": 2397,
+  "total": 117076,
+  "detail_ms": 1921,
   "search_hits": 8,
   "fail": 0
  },
  "https://bfzyapi.com/api.php/provide/vod/": {
   "api": "https://bfzyapi.com/api.php/provide/vod/",
   "ms": 1105,
-  "raw": 1105,
+  "raw": 1198,
   "hist": [
-   1999,
    978,
-   1105
+   1105,
+   1198
   ],
-  "total": 171656,
-  "detail_ms": 2070,
+  "total": 171658,
+  "detail_ms": 2271,
   "search_hits": 1631,
   "fail": 0
  },
  "https://www.huyaapi.com/api.php/provide/vod/": {
   "api": "https://www.huyaapi.com/api.php/provide/vod/",
   "ms": 928,
-  "raw": 1015,
+  "raw": 783,
   "hist": [
-   709,
    928,
-   1015
+   1015,
+   783
   ],
-  "total": 117058,
-  "detail_ms": 810,
+  "total": 117076,
+  "detail_ms": 2295,
   "search_hits": 8,
   "fail": 0
  },
  "https://api.apibdzy.com/api.php/provide/vod/": {
   "api": "https://api.apibdzy.com/api.php/provide/vod/",
-  "ms": 815,
-  "raw": 815,
+  "ms": 884,
+  "raw": 1311,
   "hist": [
-   714,
    884,
-   815
+   815,
+   1311
   ],
-  "total": 49653,
-  "detail_ms": 933,
+  "total": 49661,
+  "detail_ms": 1098,
   "search_hits": 2,
   "fail": 0
  },
  "https://jinyingzy.com/api.php/provide/vod/": {
   "api": "https://jinyingzy.com/api.php/provide/vod/",
-  "ms": 1041,
-  "raw": 1403,
+  "ms": 1403,
+  "raw": 2168,
   "hist": [
-   1041,
    932,
-   1403
+   1403,
+   2168
   ],
-  "total": 118121,
-  "detail_ms": 1363,
+  "total": 118139,
+  "detail_ms": 1110,
   "search_hits": 8,
   "fail": 0
  },
  "https://subocaiji.com/api.php/provide/vod/": {
   "api": "https://subocaiji.com/api.php/provide/vod/",
   "ms": 1104,
-  "raw": 1203,
+  "raw": 1063,
   "hist": [
-   980,
    1104,
-   1203
+   1203,
+   1063
   ],
-  "total": 118062,
-  "detail_ms": 1123,
+  "total": 118080,
+  "detail_ms": 1134,
   "search_hits": 8,
   "fail": 0
  },
  "https://hongniuzy2.com/api.php/provide/vod/from/hnm3u8/": {
   "api": "https://hongniuzy2.com/api.php/provide/vod/from/hnm3u8/",
-  "ms": 643,
-  "raw": 643,
+  "ms": 741,
+  "raw": 1383,
   "hist": [
-   552,
    741,
-   643
+   643,
+   1383
   ],
-  "total": 117543,
-  "detail_ms": 519,
+  "total": 117561,
+  "detail_ms": 3133,
   "search_hits": 8,
   "fail": 0
  },
  "http://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/": {
   "api": "http://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/",
-  "ms": 1175,
-  "raw": 1309,
+  "ms": 1309,
+  "raw": 3104,
   "hist": [
-   1072,
    1175,
-   1309
+   1309,
+   3104
   ],
-  "total": 118135,
-  "detail_ms": 4519,
+  "total": 118153,
+  "detail_ms": 1273,
   "search_hits": 8,
   "fail": 0
  },
  "https://api.xinlangapi.com/xinlangapi.php/provide/vod/": {
   "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
-  "ms": 866,
-  "raw": 939,
+  "ms": 939,
+  "raw": 1182,
   "hist": [
-   835,
    866,
-   939
+   939,
+   1182
   ],
-  "total": 118167,
-  "detail_ms": 1028,
+  "total": 118185,
+  "detail_ms": 791,
   "search_hits": 8,
   "fail": 0
  },
  "https://api.wujinapi.com/api.php/provide/vod/": {
   "api": "https://api.wujinapi.com/api.php/provide/vod/",
-  "ms": 733,
-  "raw": 733,
+  "ms": 1043,
+  "raw": 1297,
   "hist": [
-   710,
    1043,
-   733
+   733,
+   1297
   ],
-  "total": 124958,
-  "detail_ms": 1063,
+  "total": 124963,
+  "detail_ms": 1984,
   "search_hits": 9,
   "fail": 0
  }
