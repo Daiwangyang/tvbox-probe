@@ -752,6 +752,31 @@ async function handleDyLive(url) {
   return res;
 }
 
+// ===================== CCTV5 兜底直播 =====================
+// 配置里原来那条 CCTV5 来自 fanmingming 的 ipv6.m3u,里面是
+// http://[2409:8087:...]:6610/... 这种 IPv6 字面地址的移动内网源,
+// 没有 IPv6 或不是移动宽带的网络就是一片空白。这里出一条 IPv4 直连的,
+// 实测 1080p 可解(CCTV5 体育,含 NBA 每周转播场次)。
+const CCTV_LINES = [
+  ["CCTV5·IPv4直连", "http://gmxw.7766.org:808/hls/93/index.m3u8"],
+];
+
+function handleCctv() {
+  const out = ["#EXTM3U"];
+  for (const [name, u] of CCTV_LINES) {
+    out.push(
+      `#EXTINF:-1 tvg-name="CCTV5" tvg-logo="https://live.fanmingming.cn/tv/CCTV5.png" group-title="体育",${name}`
+    );
+    out.push(u);
+  }
+  return new Response(out.join("\n") + "\n", {
+    headers: Object.assign({}, CORS, {
+      "Content-Type": "application/vnd.apple.mpegurl; charset=utf-8",
+      "Cache-Control": "public, max-age=300",
+    }),
+  });
+}
+
 // ===================== 主入口 =====================
 
 export default {
@@ -772,6 +797,9 @@ export default {
 
     // 抖音直播:每次现抓现生成 m3u,地址写进 lives
     if (path === "/dylive" || path === "/dylive.m3u") return handleDyLive(url);
+
+    // CCTV5 兜底线路(IPv4),给没有 IPv6 的网络用
+    if (path === "/cctv" || path === "/cctv.m3u") return handleCctv();
 
     if (path === "/77") {
       const doc = await handleCms(url);

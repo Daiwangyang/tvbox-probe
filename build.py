@@ -94,6 +94,13 @@ FIXED = [
 # 免得上一份配置里没有、就被"继承"逻辑悄悄弄丢
 LIVES_EXTRA = [
     {
+        # 原来那条 CCTV5 走 fanmingming 的 ipv6.m3u,里面是移动 IPTV 的 IPv6
+        # 字面地址,没有 IPv6 或非移动宽带就是空的。这条是 IPv4 直连兜底。
+        "name": "🏀CCTV5·IPv4直连(NBA)",
+        "type": 0,
+        "url": "https://cf.ddngo.space/cctv.m3u",
+    },
+    {
         "name": "🫘抖音直播(实时热门)",
         "type": 0,
         "url": "https://cf.ddngo.space/dylive.m3u",
