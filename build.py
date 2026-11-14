@@ -53,6 +53,8 @@ BRAND: dict[str, tuple[str, str]] = {
     "apibdzy.com": ("🎏", "百度云"),
     "subocaiji.com": ("🚄", "速播"),
     "xinlangapi.com": ("📰", "新浪"),
+    # 从 zoo.ink 接口汇总页挖到的,17.2 万片库、抽 3 集实播全过,现有 22 个站里没有同源
+    "bfzyapi.com": ("🌪", "暴风"),
 }
 
 # 实测淘汰:建安(搜索无视关键词、播放地址是 share 页需二次解析,留在第一屏只会让人点开黑屏)

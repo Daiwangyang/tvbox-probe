@@ -1,0 +1,16 @@
+[
+ {
+  "api": "https://bfzyapi.com/api.php/provide/vod/",
+  "note": "🦔暴風┃采集 | bfzyapi.com",
+  "ms": 1517,
+  "status": 200,
+  "type": 1,
+  "kind": "json",
+  "total": 172164,
+  "classes": 49,
+  "search_ms": 3485,
+  "search_hits": 1631,
+  "search": true,
+  "ok": true
+ }
+]
