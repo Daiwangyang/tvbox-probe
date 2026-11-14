@@ -46,6 +46,15 @@
    "filter": 1
   },
   {
+   "key": "s_d8d52255b1",
+   "name": "🔰金鹰(12万)·610ms",
+   "type": 0,
+   "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_1b411b52e2",
    "name": "🌊无尽(13万)·619ms",
    "type": 0,
@@ -59,6 +68,15 @@
    "name": "🎀极速(12万)·621ms",
    "type": 0,
    "api": "https://jszyapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_2e5b1dffbd",
+   "name": "🐯虎牙(12万)·639ms",
+   "type": 0,
+   "api": "https://www.huyaapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -95,6 +113,15 @@
    "name": "💨光速(12万)·713ms",
    "type": 0,
    "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_297afcf867",
+   "name": "📦最大(13万)·751ms",
+   "type": 0,
+   "api": "https://api.zuidapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -163,15 +190,6 @@
    "filter": 1
   },
   {
-   "key": "s_d8d52255b1",
-   "name": "🔰金鹰(12万)·1573ms",
-   "type": 0,
-   "api": "https://jyzyapi.com/provide/vod/from/jinyingyun/at/json/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_wsyzy",
    "name": "🈚无损云(12.8万)·2150ms",
    "type": 0,
@@ -185,15 +203,6 @@
    "name": "🔥弹幕仓·4067ms",
    "type": 0,
    "api": "https://cf.ddngo.space/77",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
-   "key": "s_2e5b1dffbd",
-   "name": "🐯虎牙(12万)·1259ms~",
-   "type": 0,
-   "api": "https://www.huyaapi.com/api.php/provide/vod/at/json/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
