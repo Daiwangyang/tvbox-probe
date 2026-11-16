@@ -615,6 +615,297 @@ const DY_BASE = {
   browser_language: "zh-CN", browser_platform: "Win32",
   browser_name: "Chrome", browser_version: "126.0.0.0",
 };
+// ===================== Y5影院 适配层 =====================
+// 站点:www.dec4wvi.com(同一套源码轮换的别名还有 ivdy.com、y2s52n7.com)
+// 前台是 Next.js,真接口在 /mw-movie/anonymous/... 下,全部要签名:
+//   t        = 毫秒时间戳
+//   sign     = sha1( md5( 按键排序的 query 串 + "&key=<KEY>&t=<t>" ) )
+//   deviceId = 任意 UUID(服务端不校验内容,只当幂等键)
+// Worker 没有内置 md5(crypto.subtle 只给 SHA-1/256/512),所以下面自带一份。
+//
+// 播放:/v2/video/episode/url 按「剧 id + 集 nid」现签现发一条 ppvod CDN 直链,
+// 带 auth_key(有时效),所以 /y5pl 每次请求都重新换一次,绝不做长缓存。
+// 实测:清单 200、分片 200 + video/mp2t、ffmpeg 播 6 秒无错、1080p 无水印无台标。
+//
+// !! 重要:这套代码目前在 Cloudflare 上跑不通,不要写进 my.json !!
+// 上游 CDN 是「按请求方 IP 签发地址」的:国内 IP 拿到的是 ppvod011 + auth_key
+// (与 IP 无关),境外 IP 一律发到 kqgfbs + whip=<发起方IP> + sign,而 sign 包含
+// whip,改不了;试过三种绕法全失败:
+//   1. 改 whip 为客户端 IP      → 403 sign not match
+//   2. 透传 X-Forwarded-For     → 上游不采信,whip 仍是 Cloudflare 出口 IP
+//   3. worker 自己拉清单再转发  → Cloudflare 出口 IP 每次请求都在变
+//                                 (实测 104.23.172.34 / .35 交替),签发时的 IP
+//                                 和拉取时的 IP 对不上,照样 403
+// 结论:必须有一台国内服务器做这层中转(1 核 1G 足够)。签名和接口逻辑是好的,
+// 搬到国内机器上就能用,所以代码保留,只是不挂路由、不进配置。
+
+const Y5 = "https://www.dec4wvi.com";
+const Y5_MW = "/mw-movie";
+const Y5_KEY = "cb808529bae6b6be45ecfab29a4889bc";
+const Y5_DEV = "3f2a91d7-6c48-4b0e-9a51-7d2c8134b6ef";
+const Y5_PAGE = 20;
+
+// 站点只有这 5 个大类(/anonymous/get/filer/type 实测返回的就是它们)
+const Y5_CLASS = [
+  { type_id: 1, type_name: "电影" },
+  { type_id: 2, type_name: "电视剧" },
+  { type_id: 3, type_name: "综艺" },
+  { type_id: 4, type_name: "动漫" },
+  { type_id: 88, type_name: "短剧" },
+];
+
+/** MD5 → 小写 hex。Worker 环境无内置实现,按 RFC 1321 手写。 */
+function y5md5(input) {
+  const bytes = new TextEncoder().encode(input);
+  const ml = bytes.length;
+  const nBlocks = ((ml + 8) >> 6) + 1;
+  const w = new Int32Array(nBlocks * 16);
+  for (let i = 0; i < ml; i++) w[i >> 2] |= bytes[i] << ((i & 3) << 3);
+  w[ml >> 2] |= 0x80 << ((ml & 3) << 3);
+  w[nBlocks * 16 - 2] = (ml * 8) | 0;
+  w[nBlocks * 16 - 1] = Math.floor(ml / 536870912);
+
+  let a0 = 0x67452301, b0 = 0xefcdab89 | 0, c0 = 0x98badcfe | 0, d0 = 0x10325476;
+  const K = new Int32Array(64);
+  for (let i = 0; i < 64; i++) K[i] = Math.floor(Math.abs(Math.sin(i + 1)) * 4294967296) | 0;
+  const S = [7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
+    5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
+    4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
+    6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21];
+  for (let blk = 0; blk < nBlocks; blk++) {
+    const o = blk * 16;
+    let A = a0, B = b0, C = c0, D = d0;
+    for (let i = 0; i < 64; i++) {
+      let F, g;
+      if (i < 16) { F = (B & C) | (~B & D); g = i; }
+      else if (i < 32) { F = (D & B) | (~D & C); g = (5 * i + 1) & 15; }
+      else if (i < 48) { F = B ^ C ^ D; g = (3 * i + 5) & 15; }
+      else { F = C ^ (B | ~D); g = (7 * i) & 15; }
+      const tmp = D;
+      D = C; C = B;
+      const sum = (A + F + K[i] + w[o + g]) | 0;
+      B = (B + ((sum << S[i]) | (sum >>> (32 - S[i])))) | 0;
+      A = tmp;
+    }
+    a0 = (a0 + A) | 0; b0 = (b0 + B) | 0; c0 = (c0 + C) | 0; d0 = (d0 + D) | 0;
+  }
+  const out = [];
+  [a0, b0, c0, d0].forEach(function (v) {
+    for (let i = 0; i < 4; i++) {
+      out.push(((v >>> (i * 8)) & 0xff).toString(16).padStart(2, "0"));
+    }
+  });
+  return out.join("");
+}
+
+async function y5sha1(s) {
+  const buf = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(s));
+  return Array.prototype.map.call(new Uint8Array(buf), function (x) {
+    return x.toString(16).padStart(2, "0");
+  }).join("");
+}
+
+/**
+ * 调 Y5 后端。params 里空值会剔掉(签名要对"实际发出的参数"算,
+ * 带上空串会和站点自己的签名口径不一致)。
+ */
+async function y5Call(path, params, ip) {
+  const p = {};
+  Object.keys(params || {}).sort().forEach(function (k) {
+    const v = params[k];
+    if (v === null || v === undefined || v === "") return;
+    p[k] = String(v);
+  });
+  const ks = Object.keys(p);
+  const t = Date.now();
+  const plain = ks.map(function (k) { return k + "=" + p[k]; }).join("&");
+  const h = (plain ? plain + "&" : "") + "key=" + Y5_KEY + "&t=" + t;
+  const sign = await y5sha1(y5md5(h));
+  const qs = ks.map(function (k) {
+    return k + "=" + encodeURIComponent(p[k]);
+  }).join("&");
+
+  const ctl = new AbortController();
+  const timer = setTimeout(function () { ctl.abort(); }, 12000);
+  try {
+    const r = await fetch(`${Y5}${Y5_MW}${path}` + (qs ? "?" + qs : ""), {
+      headers: {
+        "User-Agent": UA77,
+        Accept: "application/json",
+        sign: sign,
+        t: String(t),
+        deviceId: Y5_DEV,
+        Referer: Y5 + "/",
+        // 上游 CDN 按「请求方 IP」签发地址(境外 IP 会被发到绑 IP 的线路),
+        // 把播放器的真实公网 IP 透传过去,争取让它按这个 IP 签发
+        ...(ip ? { "X-Forwarded-For": ip, "x-original-forwarded-for": ip } : {}),
+      },
+      signal: ctl.signal,
+    });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch (e) {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function y5Json(obj) {
+  return new Response(JSON.stringify(obj), {
+    status: 200,
+    headers: Object.assign({}, CORS, {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+    }),
+  });
+}
+
+/** 单条记录 → 苹果CMS 的 vod_* 字段。 */
+function y5Item(v) {
+  return {
+    vod_id: v.vodId,
+    vod_name: v.vodName || "",
+    vod_pic: v.vodPic || "",
+    vod_remarks: v.vodRemarks || "",
+    vod_year: v.vodYear ? String(v.vodYear) : "",
+    vod_area: v.vodArea || "",
+    vod_lang: v.vodLang || "",
+    vod_actor: v.vodActor || "",
+    vod_director: v.vodDirector || "",
+    vod_content: stripTags(String(v.vodContent || v.vodBlurb || "")),
+    vod_score: v.vodScore ? String(v.vodScore) : "",
+    type_id: v.typeId1 || v.typeId || 0,
+    type_name: v.typeName || "",
+  };
+}
+
+/** 一集的播放地址:指向本 worker,点开那一刻才去换新鲜的 auth_key。 */
+function y5Ep(origin, id, nid) {
+  return `${origin}/y5pl?id=${id}&nid=${nid}`;
+}
+
+async function handleY5(url) {
+  const ac = url.searchParams.get("ac") || "list";
+  const wd = (url.searchParams.get("wd") || "").trim();
+  const ids = (url.searchParams.get("ids") || "").trim();
+  const tid = (url.searchParams.get("t") || "").trim();
+  let pg = parseInt(url.searchParams.get("pg") || "1", 10);
+  if (!(pg > 0)) pg = 1;
+
+  // ---- 详情:顺带把剧集表拼成 vod_play_url ----
+  if (ac === "detail" && ids) {
+    const list = [];
+    for (const raw of ids.split(",").slice(0, 10)) {
+      const id = raw.trim();
+      if (!/^\d+$/.test(id)) continue;
+      const j = await y5Call("/anonymous/video/detail", { id: id });
+      const d = j && j.data;
+      if (!d) continue;
+      const it = y5Item(d);
+      const eps = (d.episodeList || []).slice().sort(function (a, b) {
+        return (a.sort || 0) - (b.sort || 0);
+      });
+      it.vod_play_from = "y5";
+      it.vod_play_url = eps.map(function (e) {
+        return (e.name || "正片") + "$" + y5Ep(url.origin, d.vodId, e.nid);
+      }).join("#");
+      if (!it.vod_remarks && eps.length) it.vod_remarks = eps.length + "集";
+      list.push(it);
+    }
+    return y5Json({ list: list });
+  }
+
+  // ---- 搜索 ----
+  if (wd) {
+    const j = await y5Call("/anonymous/video/searchByWordPageable", {
+      keyword: wd, pageNum: pg, pageSize: Y5_PAGE,
+    });
+    const d = (j && j.data) || {};
+    const list = (d.list || []).map(y5Item);
+    const total = d.totalCount || list.length;
+    return y5Json({
+      page: pg,
+      pagecount: Math.max(1, Math.ceil(total / Y5_PAGE)),
+      limit: Y5_PAGE,
+      total: total,
+      list: list,
+    });
+  }
+
+  // ---- 分类列表(首页也走这条) ----
+  const params = { pageNum: pg, pageSize: Y5_PAGE };
+  if (/^\d+$/.test(tid)) {
+    // 1/2/3/4/88 是大类,按 type1 查;其余当作具体 typeId
+    if (["1", "2", "3", "4", "88"].indexOf(tid) >= 0) params.type1 = tid;
+    else params.type = tid;
+  } else {
+    // 不带分类时上游返回空数组,默认落到「电影」,否则首页一片空白
+    params.type1 = "1";
+  }
+  const j = await y5Call("/anonymous/video/list", params);
+  const d = (j && j.data) || {};
+  const list = (d.list || []).map(y5Item);
+  const total = d.totalCount || list.length;
+  return y5Json({
+    class: Y5_CLASS,
+    page: pg,
+    pagecount: Math.max(1, Math.ceil(total / Y5_PAGE)),
+    limit: Y5_PAGE,
+    total: total,
+    list: list,
+  });
+}
+
+/**
+ * 单集播放:现签现取一条直链,再把清单里的相对分片补成绝对地址。
+ * 不做 ts 代理 —— 分片走 CDN 直连,worker 只出这一份几百 KB 的清单。
+ */
+async function handleY5Play(url, req) {
+  const id = (url.searchParams.get("id") || "").trim();
+  const nid = (url.searchParams.get("nid") || "").trim();
+  if (!/^\d+$/.test(id) || !/^\d+$/.test(nid)) {
+    return new Response("bad id", { status: 400, headers: CORS });
+  }
+  const ip = (req && (req.headers.get("cf-connecting-ip") ||
+                      req.headers.get("x-forwarded-for") || "")) || "";
+  const j = await y5Call("/anonymous/v2/video/episode/url", {
+    clientType: 1, id: id, nid: nid,
+  }, ip.split(",")[0].trim());
+  const list = ((j && j.data && j.data.list) || []).filter(function (x) {
+    return x && x.url && /^https?:/i.test(x.url);
+  });
+  if (!list.length) {
+    return new Response("no source", { status: 404, headers: CORS });
+  }
+  // 同一条片子会给 1080/720/480 好几档,按分辨率取最高
+  list.sort(function (a, b) { return (b.resolution || 0) - (a.resolution || 0); });
+  const pick = list[0];
+
+  // 注意 referer 一定不能带:ppvod 的 CDN 看到 referer 就把请求 302 到
+  // kqgfbs 那条线,并在 URL 里写死「发起方 IP」(whip=...)。worker 的出口 IP
+  // 是 Cloudflare 的,播放器一换 IP 立刻 403。不带 referer 拿到的
+  // auth_key 直链才是跟 IP 无关的那一档。
+  const r = await getText(pick.url, null, 8000);
+  if (r.status !== 200 || !r.text) {
+    // 清单拉不到就 302 给原始地址,让播放器自己去跟
+    return new Response(null, {
+      status: 302,
+      headers: Object.assign({}, CORS, {
+        Location: pick.url,
+        "Cache-Control": "no-store",
+      }),
+    });
+  }
+  return new Response(normalizeM3u8(r.text, pick.url), {
+    status: 200,
+    headers: Object.assign({}, CORS, {
+      "Content-Type": "application/vnd.apple.mpegurl",
+      "Cache-Control": "no-store",
+    }),
+  });
+}
+
 // 1 热门 2 游戏 3 娱乐 4 才艺 5 生活 (编号不对只是少抓,不会报错)
 const DY_CATS = ["1", "2", "3"];
 
@@ -794,6 +1085,10 @@ export default {
 
     // 无损云适配层,同样免 sig(api 地址要写进公开的 my.json)
     if (path === "/wsy") return handleWsy(url);
+
+    // Y5影院适配层:api 地址要写进 my.json,所以同样免 sig
+    if (path === "/y5") return handleY5(url);
+    if (path === "/y5pl") return handleY5Play(url, req);
 
     // 抖音直播:每次现抓现生成 m3u,地址写进 lives
     if (path === "/dylive" || path === "/dylive.m3u") return handleDyLive(url);
