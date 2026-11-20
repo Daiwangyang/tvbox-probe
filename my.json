@@ -28,15 +28,6 @@
    "filter": 1
   },
   {
-   "key": "s_21e9cfadc2",
-   "name": "🐂红牛(12万)·560ms",
-   "type": 0,
-   "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_86eb60a6ce",
    "name": "🎀极速(12万)·614ms",
    "type": 0,
@@ -64,17 +55,8 @@
    "filter": 1
   },
   {
-   "key": "s_b6d1253152",
-   "name": "🦊火狐(12万)·659ms",
-   "type": 0,
-   "api": "https://hhzyapi.com/api.php/provide/vod/",
-   "searchable": 1,
-   "quickSearch": 1,
-   "filter": 1
-  },
-  {
    "key": "s_e1e4e73af0",
-   "name": "🦚360(7.5万)·678ms",
+   "name": "🦚360(7.5万)·676ms",
    "type": 0,
    "api": "https://360zy.com/api.php/provide/vod/",
    "searchable": 1,
@@ -100,19 +82,19 @@
    "filter": 1
   },
   {
-   "key": "s_3b3caedfe6",
-   "name": "🐰玉兔(23万)·781ms",
+   "key": "s_c3389de107",
+   "name": "🎏百度云(5万)·812ms",
    "type": 0,
-   "api": "https://apiyutu.com/api.php/provide/vod/",
+   "api": "https://api.apibdzy.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
   },
   {
-   "key": "s_c3389de107",
-   "name": "🎏百度云(5万)·812ms",
+   "key": "s_b6d1253152",
+   "name": "🦊火狐(12万)·816ms",
    "type": 0,
-   "api": "https://api.apibdzy.com/api.php/provide/vod/",
+   "api": "https://hhzyapi.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
@@ -127,8 +109,17 @@
    "filter": 1
   },
   {
+   "key": "s_21e9cfadc2",
+   "name": "🐂红牛(12万)·978ms",
+   "type": 0,
+   "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
    "key": "s_459dfdcfb4",
-   "name": "🏙魔都(9.2万)·1213ms",
+   "name": "🏙魔都(9.2万)·1070ms",
    "type": 0,
    "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
    "searchable": 1,
@@ -140,6 +131,15 @@
    "name": "💨光速(12万)·1294ms",
    "type": 0,
    "api": "http://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filter": 1
+  },
+  {
+   "key": "s_3b3caedfe6",
+   "name": "🐰玉兔(23万)·1338ms",
+   "type": 0,
+   "api": "https://apiyutu.com/api.php/provide/vod/",
    "searchable": 1,
    "quickSearch": 1,
    "filter": 1
