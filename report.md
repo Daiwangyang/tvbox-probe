@@ -1,6 +1,6 @@
-# 探测结果 2026-11-22 22:32
+# 探测结果 2026-11-23 03:07
 
-- 待测 299 / 达标 276 / 成品 110（含降级保留）
+- 待测 299 / 达标 278 / 成品 110（含降级保留）
 
 - 阈值 1500ms,连续 2 轮不通才淘汰
 
@@ -8,16 +8,14 @@
 
 | 延迟 | 站点 | 接口 |
 | --- | --- | --- |
-| 58ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
-| 64ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
-| 159ms | 🍀┃非凡┃资源 | `http://ffzy5.tv/api.php/provide/vod` |
-| 172ms | 🥗┃非凡┃资源 | `http://ffzy1.tv/api.php/provide/vod/` |
-| 236ms | ikunzyapi.com | `https://ikunzyapi.com/api.php/provide/vod` |
-| 252ms | 🐂红牛┃采集 | `https://www.hongniuzy2.com/api.php/provide/vod/` |
-| 278ms | 影视 • 电影天堂 | `http://caiji.dyttzyapi.com/api.php/provide/vod` |
-| 289ms | 影视 • 极速[直连] | `https://jszyapi.com/api.php/provide/vod/?ac=list` |
-| 300ms | 💓‍观影┃4K💓‍ | `csp_AiNewGuanYingGuard` |
-| 300ms | 💥韩剧┃秒播💥 | `csp_WexAiHanXiaoQuanGuard` |
+| 54ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
+| 64ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
+| 65ms | 🥗┃非凡┃资源 | `http://ffzy1.tv/api.php/provide/vod/` |
+| 81ms | 影视 • 非凡[直连] | `http://ffzy.tv/api.php/provide/vod/` |
+| 129ms | ikunzyapi.com | `https://ikunzyapi.com/api.php/provide/vod` |
+| 180ms | 🕹️淘片┃采集 | `https://taopianapi.com/cjapi/mc/vod/json.html` |
+| 199ms | zuida.xyz | `https://zuida.xyz/api.php/provide/vod/` |
+| 230ms | caiji.moduapi.cc | `https://caiji.moduapi.cc/api.php/provide/vod/?ac=list` |
 | 300ms | 360 | `csp_SP360` |
 | 300ms | 泥巴(墙) | `csp_Nbys` |
 | 300ms | Alist(SP) | `csp_Alist` |
@@ -68,33 +66,35 @@
 | 300ms | 🍂┃咕噜┃影视 | `csp_Gulu` |
 | 300ms | 🎵┃库库┃音乐 | `csp_KuKuMusic` |
 | 300ms | 💃┃糖豆┃舞蹈 | `csp_AppTd` |
+| 300ms | 🎈┃国粹┃戏曲 | `csp_Bili` |
+| 300ms | 豆豆┃片单 <fix+升级弹幕> | `csp_DouDouGuard` |
 
 ## 弱可用 / 广告解析
 
-- 145ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
-- 146ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
-- 179ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
-- 199ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
-- 264ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
-- 267ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
-- 320ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
-- 667ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
-- 1519ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
-- 3881ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
+- 116ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
+- 142ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
+- 174ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
+- 188ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
+- 192ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
+- 267ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
+- 338ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
+- 924ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
+- 1177ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
+- 3740ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
 
 ## 不通
 
 - 👒┃小胡┃资源┃ `http://c.小胡.icu/api.php/provide/vod/` — URLError
-- 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
 - 🦁┃四九┃资源 `https://49zy1.com/api.php/provide/vod/?ac=list` — URLError
+- 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
 - 🐯┃奇虎┃采集 `https://caiji.qhzyapi.com/api.php/provide/vod/` — URLError
 - ⛱┃可可┃采集 `https://kekezy1.com/api.php/provide/vod/?ac=list` — URLError
+- 🎶明星┃MV `https://mv.wogg.link/mv/vod` — HTTPError
 - xh1.xn--yetu07f.icu `http://xh1.xn--yetu07f.icu/api.php/provide/vod/` — URLError
 - xzcjz.com `https://xzcjz.com/api.php/provide/vod` — URLError
 - vip.mosangkeji.com:443 `https://vip.mosangkeji.com:443/api/?key=q7mSY5L8ssbm1J3Eai&url=` — URLError
-- 🎶明星┃MV `https://mv.wogg.link/mv/vod` — HTTPError
-- xiutan.shiyifacai.com `http://xiutan.shiyifacai.com/zuoan/api.php/app/` — URLError
 - 119.91.123.253:2345 `http://119.91.123.253:2345/Api/yun.php?url=` — URLError
+- xiutan.shiyifacai.com `http://xiutan.shiyifacai.com/zuoan/api.php/app/` — URLError
 
 ## 引流源(跳小程序 / 关注公众号,已剔除)
 
