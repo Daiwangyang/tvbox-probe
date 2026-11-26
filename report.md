@@ -1,6 +1,6 @@
-# 探测结果 2026-11-26 00:15
+# 探测结果 2026-11-26 08:54
 
-- 待测 299 / 达标 278 / 成品 110（含降级保留）
+- 待测 299 / 达标 279 / 成品 111（含降级保留）
 
 - 阈值 1500ms,连续 2 轮不通才淘汰
 
@@ -8,21 +8,18 @@
 
 | 延迟 | 站点 | 接口 |
 | --- | --- | --- |
-| 41ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
-| 46ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
-| 107ms | 🥗┃非凡┃资源 | `http://ffzy1.tv/api.php/provide/vod/` |
-| 111ms | ikunzyapi.com | `https://ikunzyapi.com/api.php/provide/vod` |
-| 132ms | 🍀┃非凡┃资源 | `http://ffzy5.tv/api.php/provide/vod` |
-| 139ms | 影视 • 非凡[直连] | `http://ffzy.tv/api.php/provide/vod/` |
-| 186ms | api.guangsuapi.com | `https://api.guangsuapi.com/api.php/provide/vod/` |
-| 225ms | zuida.xyz | `https://zuida.xyz/api.php/provide/vod/` |
-| 241ms | 影视 • 极速[直连] | `https://jszyapi.com/api.php/provide/vod/?ac=list` |
-| 249ms | 🐂红牛┃采集 | `https://www.hongniuzy2.com/api.php/provide/vod/` |
-| 269ms | 🔥️火狐┃秒播 | `https://hhzyapi.com/api.php/provide/vod/?ac=list` |
-| 283ms | 🥑┃量子┃资源 | `https://lzizy1.com/api.php/provide/vod/` |
-| 288ms | 🎶明星┃MV | `https://mv.wogg.link/mv/vod` |
-| 298ms | 🍎高清┃2K | `https://api.1080zyku.com/inc/apijson.php` |
-| 300ms | 🐮【免费分享】🐮 | `csp_NewDouBanGuard` |
+| 38ms | 🎀极速┃采集 | `https://jszyapi.com/api.php/provide/vod/` |
+| 40ms | 🦊火狐采集 | `https://hhzyapi.com/api.php/provide/vod/` |
+| 67ms | 🆕非凡┃资源 | `http://cj.ffzyapi.com/api.php/provide/vod/` |
+| 97ms | 🥗┃非凡┃资源 | `http://ffzy1.tv/api.php/provide/vod/` |
+| 134ms | 🔰金鹰┃影视 | `https://jyzyapi.com/provide/vod/` |
+| 134ms | 影视 • 非凡[直连] | `http://ffzy.tv/api.php/provide/vod/` |
+| 167ms | api.guangsuapi.com | `https://api.guangsuapi.com/api.php/provide/vod/` |
+| 188ms | 🐂红牛┃采集 | `https://www.hongniuzy2.com/api.php/provide/vod/` |
+| 199ms | 影视 • 极速[直连] | `https://jszyapi.com/api.php/provide/vod/?ac=list` |
+| 226ms | caiji.moduapi.cc | `https://caiji.moduapi.cc/api.php/provide/vod/?ac=list` |
+| 248ms | zuida.xyz | `https://zuida.xyz/api.php/provide/vod/` |
+| 251ms | 🕹️淘片┃采集 | `https://taopianapi.com/cjapi/mc/vod/json.html` |
 | 300ms | 360 | `csp_SP360` |
 | 300ms | 泥巴(墙) | `csp_Nbys` |
 | 300ms | Alist(SP) | `csp_Alist` |
@@ -68,26 +65,28 @@
 | 300ms | 🍂┃影侠┃影视 | `csp_DyXia` |
 | 300ms | 🍂┃金牌┃秒播 | `csp_JinPai` |
 | 300ms | 🍂┃杜北┃秒播 | `csp_Dubk` |
+| 300ms | 🍂┃橘子┃影视 | `csp_AppDramaV5` |
+| 300ms | 🍂┃师兄┃影视 | `csp_DaShiXiong` |
+| 300ms | 🍂┃咕噜┃影视 | `csp_Gulu` |
 
 ## 弱可用 / 广告解析
 
-- 73ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
-- 148ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
-- 184ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
-- 268ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
-- 283ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
-- 285ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
-- 322ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
-- 589ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
-- 1266ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
-- 1915ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
+- 114ms 🔮星空┃影视 — 无 list 字段 `https://api.tiankongapi.com/api.php/provide/vod/`
+- 154ms suoniapi.com — 禁搜索 `https://suoniapi.com/api.php/provide/vod/`
+- 165ms 🦜索尼┃采集 — 禁搜索 `https://suoniapi.com/api.php/provide/vod`
+- 168ms 🎊索尼┃资源 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/from/snm3u8/`
+- 198ms 饭太硬.top — 无 list 字段 `http://饭太硬.top/深色壁纸/api.php`
+- 207ms 🐉┃索尼┃高清 — 禁搜索 `https://suoniapi.com/api.php/provide/vod/?ac=list`
+- 218ms 🚄快车┃影视 — 无 list 字段 `https://caiji.kczyapi.com/api.php/provide/vod/`
+- 517ms 🥘微吧┃影视 — 无 list 字段 `https://cjhwba.com/api.php/provide/vod/?ac=list`
+- 834ms video.adminqt.cn — 无 list 字段 `https://video.adminqt.cn/api.php/provide/vod/`
+- 1260ms cdn09022024.gitlink.org. — 无 list 字段 `https://cdn09022024.gitlink.org.cn/api/v1/repos/xxooo/in/raw/in.bmp`
 
 ## 不通
 
-- 💥闪电┃秒播💥 `csp_WexAiYueYueGuard` — jar 无此类
-- 👒┃小胡┃资源┃ `http://c.小胡.icu/api.php/provide/vod/` — URLError
 - 🦁┃四九┃资源 `https://49zy1.com/api.php/provide/vod/?ac=list` — URLError
 - 🛰️飞速┃采集 `https://www.feisuzyapi.com/api.php/provide/vod/?ac=list` — URLError
+- 👒┃小胡┃资源┃ `http://c.小胡.icu/api.php/provide/vod/` — URLError
 - 🐯┃奇虎┃采集 `https://caiji.qhzyapi.com/api.php/provide/vod/` — URLError
 - ⛱┃可可┃采集 `https://kekezy1.com/api.php/provide/vod/?ac=list` — URLError
 - xh1.xn--yetu07f.icu `http://xh1.xn--yetu07f.icu/api.php/provide/vod/` — URLError
@@ -98,4 +97,4 @@
 
 ## 引流源(跳小程序 / 关注公众号,已剔除)
 
-- 关注公众号: `https://xiaomark.com/`
+- 扫码: `https://xiaomark.com/`
